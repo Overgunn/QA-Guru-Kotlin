@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Tags
 import org.junit.jupiter.api.Test
 
 @Feature("Simple calc operations")
-@Story("addition function")
+@Story("multiply function")
 @Tags(Tag("calculator"),Tag("multiply"),Tag("regression"))
 
 class MultiplyFunc {
