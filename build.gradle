@@ -10,11 +10,6 @@ repositories {
     mavenCentral()
 }
 
-
-kotlin {
-    jvmToolchain(21)
-}
-
 configurations {
     agent {
         canBeResolved = true
