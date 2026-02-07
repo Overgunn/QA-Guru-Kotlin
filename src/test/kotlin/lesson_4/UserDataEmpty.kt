@@ -25,7 +25,7 @@ class UserDataEmpty {
             null,
             101,
             "colSunders@email.com",
-            true
+            false
         )
 
         secondUser.name.let { println("Users name is $it")}
@@ -35,11 +35,15 @@ class UserDataEmpty {
         secondUser.email.let { println("Users email is $it")}
         secondUser.isActive.let { println("Is user active? $it")}
 
+        with(secondUser) {
+            println("User info: Name = $name, secondName = $secondName, age = $age, isActive = $isActive")}
+
         secondUser.name.shouldNotBeNull()
         secondUser.secondName.shouldNotBeNull()
         secondUser.age.shouldNotBeNull()
         secondUser.id.shouldNotBeNull()
         secondUser.email.shouldNotBeNull()
         secondUser.isActive.shouldBe(true)
+
     }
 }
