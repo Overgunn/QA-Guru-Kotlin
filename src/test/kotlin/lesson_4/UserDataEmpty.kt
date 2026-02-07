@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test
 
 @Feature("Scope functions")
 @Story("Using let and run scope functions")
-@Tags(Tag("scope-functions"),Tag("user-data"),Tag("negative-checks"),Tag("regression"))
+@Tags(Tag("scope-functions"),Tag("null-check"),Tag("negative-checks"),Tag("regression"))
 
 class UserDataEmpty {
 

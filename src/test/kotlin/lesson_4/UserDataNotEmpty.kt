@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test
 
 @Feature("Scope functions")
 @Story("Using let and run scope functions")
-@Tags(Tag("scope-functions"),Tag("user-data"),Tag("regression"))
+@Tags(Tag("scope-functions"),Tag("non-null-check"),Tag("regression"))
 
 class UserDataNotEmpty {
 
