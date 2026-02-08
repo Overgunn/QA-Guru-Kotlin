@@ -13,9 +13,4 @@ class PhoneValidator {
             return phoneRegex.matches(this)
         }
     }
-
-    infix fun String.phoneCheck(expected: Boolean) {
-        val actual = this.validNumber()
-        if (actual != expected) throw AssertionError("Phone '$this': expected $expected, got $actual")
-    }
 }
