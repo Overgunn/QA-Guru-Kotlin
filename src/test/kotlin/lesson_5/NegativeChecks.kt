@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Tags
 import org.junit.jupiter.api.Test
 
 @Feature("Asserts")
-@Story("Assert checks using regexp")
+@Story("Assert checks using regexp and infix asserts")
 @Tags(Tag("asserts"),Tag("negative-checks"),Tag("regression"))
 
 class NegativeChecks {
