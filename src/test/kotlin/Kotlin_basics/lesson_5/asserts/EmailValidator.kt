@@ -1,4 +1,4 @@
-package Koltin_basics.lesson_5.asserts
+package Kotlin_basics.lesson_5.asserts
 
 class EmailValidator {
 
