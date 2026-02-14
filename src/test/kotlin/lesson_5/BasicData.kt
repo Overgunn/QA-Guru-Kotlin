@@ -1,7 +1,7 @@
 package lesson_5
 
 class BasicData {
-    data class BasicData(
+    data class BasicDataTestClass(
         val name: String,
         val secondName: String,
         val email: String,

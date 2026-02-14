@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 
 class PositiveChecks {
 
-    val validUserData = BasicData.BasicData(
+    val validUserData = BasicData.BasicDataTestClass(
         "Hilly",
         "Billy",
         "farmerhead@gmail.com",

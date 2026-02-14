@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 
 class NegativeChecks {
 
-    val validUserData = BasicData.BasicData(
+    val validUserData = BasicData.BasicDataTestClass(
         "Hilly",
         "Billy",
         "farmerhead @gmail.com",
