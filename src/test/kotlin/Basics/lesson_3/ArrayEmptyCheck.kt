@@ -1,4 +1,4 @@
-package lesson_3
+package Basics.lesson_3
 
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.qameta.allure.Feature

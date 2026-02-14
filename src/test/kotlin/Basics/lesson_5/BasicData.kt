@@ -1,4 +1,4 @@
-package lesson_5
+package Basics.lesson_5
 
 class BasicData {
     data class BasicDataTestClass(

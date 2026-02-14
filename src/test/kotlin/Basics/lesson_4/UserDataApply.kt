@@ -1,4 +1,4 @@
-package lesson_4
+package Basics.lesson_4
 
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
@@ -19,7 +19,7 @@ class UserDataApply {
     @Test
     @DisplayName("Scope functions")
     fun runScopeFunctions() {
-        val thirdUser = UserDataClass.UserData(
+        val thirdUser = _root_ide_package_.Basics.lesson_4.UserDataClass.UserData(
             "King",
             null,
             null,

@@ -1,4 +1,4 @@
-package lesson_2
+package Basics.lesson_2
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
@@ -9,21 +9,20 @@ import org.junit.jupiter.api.Tags
 import org.junit.jupiter.api.Test
 
 @Feature("Simple calc operations")
-@Story("substraction function")
-@Tags(Tag("calculator"),Tag("subtraction"),Tag("regression"))
+@Story("multiply function")
+@Tags(Tag("calculator"),Tag("multiply"),Tag("regression"))
 
-class SubtractFunc {
+class MultiplyFunc {
 
     @Test
-    @DisplayName("Substraction function")
-    fun subtractionOfTwoNumbers() {
+    @DisplayName("Multiply function")
+    fun multiplicationOfTwoNumbers() {
         val a = 2
-        val b = 1
+        val b = 2
 
-
-        val expectedResult = 1
-        val actualResult = a - b
-        println("$a - $b = $actualResult")
+        val expectedResult = 4
+        val actualResult = a * b
+        println("$a * $b = $actualResult")
         expectedResult shouldBe actualResult
     }
 }

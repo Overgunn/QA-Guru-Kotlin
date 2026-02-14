@@ -1,4 +1,4 @@
-package lesson_6
+package Basics.lesson_6
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test
 @Tags(Tag("data-class"),Tag("positive-checks"),Tag("regression"))
 
 class PositiveChecks {
-    val StudentsEnum.toStudent: StudentData
-        get() = StudentData(
+    val Basics.lesson_6.StudentsEnum.toStudent: Basics.lesson_6.StudentData
+        get() = _root_ide_package_.Basics.lesson_6.StudentData(
             firstName,
             lastName,
             age,
@@ -23,7 +23,7 @@ class PositiveChecks {
             averageScore
         )
 
-    val defaultStudent = StudentData(
+    val defaultStudent = _root_ide_package_.Basics.lesson_6.StudentData(
         "Paul",
         "Bunyan",
         15,
@@ -35,7 +35,7 @@ class PositiveChecks {
     @Test
     @DisplayName("Full data compare test")
     fun studentDataCheck() {
-        val expectedStudentData = StudentData(
+        val expectedStudentData = _root_ide_package_.Basics.lesson_6.StudentData(
             "Paul",
             "Bunyan",
             15,
@@ -69,7 +69,7 @@ class PositiveChecks {
     @Test
     @DisplayName("Get data from enum class for positive check")
     fun firstStudentEnumData() {
-        val firstEnumStudent = StudentsEnum.STUDENT_1
+        val firstEnumStudent = _root_ide_package_.Basics.lesson_6.StudentsEnum.STUDENT_1
 
         firstEnumStudent.firstName shouldBe defaultStudent.firstName
         firstEnumStudent.lastName shouldBe defaultStudent.lastName
@@ -84,7 +84,7 @@ class PositiveChecks {
     @DisplayName("Enum toStudent conversion test")
     fun enumToStudentTest() {
         val expectedStudent = defaultStudent
-        val actualStudent = StudentsEnum.STUDENT_1.toStudent
+        val actualStudent = _root_ide_package_.Basics.lesson_6.StudentsEnum.STUDENT_1.toStudent
 
         actualStudent shouldBe expectedStudent
     }

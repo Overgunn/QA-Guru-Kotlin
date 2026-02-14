@@ -1,4 +1,4 @@
-package lesson_6
+package Basics.lesson_6
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test
 @Tags(Tag("data-class"),Tag("negative-checks"),Tag("regression"))
 
 class NegativeChecks {
-    val StudentsEnum.toStudent: StudentData
-        get() = StudentData(
+    val Basics.lesson_6.StudentsEnum.toStudent: Basics.lesson_6.StudentData
+        get() = _root_ide_package_.Basics.lesson_6.StudentData(
             firstName,
             lastName,
             age,
@@ -22,7 +22,7 @@ class NegativeChecks {
             grade,
             averageScore
         )
-    val defaultStudent = StudentData(
+    val defaultStudent = _root_ide_package_.Basics.lesson_6.StudentData(
         "Paul",
         "Bunyan",
         15,
@@ -34,7 +34,7 @@ class NegativeChecks {
     @Test
     @DisplayName("Full data compare test")
     fun studentDataCheck() {
-        val expectedStudentData = StudentData(
+        val expectedStudentData = _root_ide_package_.Basics.lesson_6.StudentData(
             "Roddy",
             "Pipper",
             17,
@@ -68,7 +68,7 @@ class NegativeChecks {
     @Test
     @DisplayName("Get data from enum class for negative check")
     fun secondStudentEnumData() {
-        val secondEnumStudent = StudentsEnum.STUDENT_2
+        val secondEnumStudent = _root_ide_package_.Basics.lesson_6.StudentsEnum.STUDENT_2
 
         secondEnumStudent.firstName shouldBe defaultStudent.firstName
         secondEnumStudent.lastName shouldBe defaultStudent.lastName
@@ -83,7 +83,7 @@ class NegativeChecks {
     @DisplayName("Enum toStudent conversion test")
     fun enumToStudentTest() {
         val expectedStudent = defaultStudent
-        val actualStudent = StudentsEnum.STUDENT_2.toStudent
+        val actualStudent = _root_ide_package_.Basics.lesson_6.StudentsEnum.STUDENT_2.toStudent
 
         actualStudent shouldBe expectedStudent
     }

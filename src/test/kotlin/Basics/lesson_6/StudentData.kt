@@ -1,4 +1,4 @@
-package lesson_6
+package Basics.lesson_6
 
 data class StudentData(
         var firstName: String,
