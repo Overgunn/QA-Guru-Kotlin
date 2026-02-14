@@ -1,4 +1,4 @@
-package Basics.lesson_4
+package lesson_4
 
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
@@ -19,7 +19,7 @@ class UserDataEmpty {
     @DisplayName("Null data check")
     fun runScopeFunctions() {
 
-        val secondUser = _root_ide_package_.Basics.lesson_4.UserDataClass.UserData(
+        val secondUser = UserDataClass.UserData(
             "Col",
             null,
             null,

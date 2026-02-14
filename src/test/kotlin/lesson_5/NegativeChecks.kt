@@ -1,11 +1,11 @@
-package Basics.lesson_5
+package lesson_5
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
 import io.qameta.allure.Story
-import Basics.lesson_5.asserts.EmailValidator.Companion.validEmail
-import Basics.lesson_5.asserts.PassPhraseValidator.Companion.validPassphrase
-import Basics.lesson_5.asserts.PhoneValidator.Companion.validNumber
+import lesson_5.asserts.EmailValidator.Companion.validEmail
+import lesson_5.asserts.PassPhraseValidator.Companion.validPassphrase
+import lesson_5.asserts.PhoneValidator.Companion.validNumber
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Tags
@@ -13,16 +13,16 @@ import org.junit.jupiter.api.Test
 
 @Feature("Asserts")
 @Story("Assert checks using regexp and infix asserts")
-@Tags(Tag("asserts"),Tag("positive-checks"),Tag("regression"))
+@Tags(Tag("asserts"),Tag("negative-checks"),Tag("regression"))
 
-class PositiveChecks {
+class NegativeChecks {
 
-    val validUserData = _root_ide_package_.Basics.lesson_5.BasicData.BasicDataTestClass(
+    val validUserData = BasicData.BasicDataTestClass(
         "Hilly",
         "Billy",
-        "farmerhead@gmail.com",
-        "+1234567890",
-        "PASSPHRASE123^"
+        "farmerhead @gmail.com",
+        "+123456-7890",
+        "pass!PHRASE123"
     )
 
     @Test
@@ -35,7 +35,7 @@ class PositiveChecks {
     }
 
     @Test
-    @DisplayName("Phone number assertion with infix")
+    @DisplayName("Phone number assertion with infix assert")
     fun phoneAssertInfixTest() {
         val assertPhoneNumber = validUserData.phoneNumber
         val validTestNumber = assertPhoneNumber.validNumber()
@@ -77,7 +77,6 @@ class PositiveChecks {
 
         validPassphrase shouldBe true
     }
-
     @Test
     @DisplayName("Passphrase assertion with infix")
     fun passPhraseAssertInfixTest() {

@@ -1,4 +1,4 @@
-package Basics.lesson_4
+package lesson_4
 
 class UserDataClass {
 

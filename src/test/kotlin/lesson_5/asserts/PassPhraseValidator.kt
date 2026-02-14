@@ -1,4 +1,4 @@
-package Basics.lesson_5.asserts
+package lesson_5.asserts
 
 class PassPhraseValidator {
 
