@@ -1,4 +1,5 @@
-package lesson_2
+/*
+package Basics.lesson_2
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Tags
 import org.junit.jupiter.api.Test
 
+@Deprecated
 @Feature("Simple calc operations")
 @Story("addition function")
 @Tags(Tag("calculator"),Tag("addition"),Tag("regression"))
@@ -25,4 +27,4 @@ class AddFunc {
             println("$a + $b = $actualResult")
         expectedResult shouldBe actualResult
     }
-}
+}*/

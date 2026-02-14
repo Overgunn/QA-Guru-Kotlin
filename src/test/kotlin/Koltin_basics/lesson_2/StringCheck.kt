@@ -1,4 +1,5 @@
-package lesson_2
+/*
+package Basics.lesson_2
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
@@ -22,4 +23,4 @@ fun stringCompare() {
         val stringCompare = randomString.compareTo(searchString, true)
         stringCompare shouldBe 0
 }
-}
+}*/

@@ -1,4 +1,4 @@
-package lesson_5.asserts
+package Koltin_basics.lesson_5.asserts
 
 class PhoneValidator {
 

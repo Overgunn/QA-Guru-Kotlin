@@ -1,4 +1,5 @@
-package lesson_4
+/*
+package Basics.lesson_4
 
 class UserDataClass {
 
@@ -10,4 +11,4 @@ class UserDataClass {
         val email: String,
         var isActive: Boolean
     )
-}
+}*/

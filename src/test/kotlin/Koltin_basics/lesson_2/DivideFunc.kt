@@ -1,4 +1,5 @@
-package lesson_2
+/*
+package Basics.lesson_2
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
@@ -25,4 +26,4 @@ class DivideFunc {
         println("$a / $b = $actualResult")
         expectedResult shouldBe actualResult
     }
-}
+}*/

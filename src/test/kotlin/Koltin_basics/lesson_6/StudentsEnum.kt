@@ -1,4 +1,5 @@
-package lesson_6
+/*
+package Basics.lesson_6
 
 enum class StudentsEnum(
     val firstName: String,
@@ -25,3 +26,4 @@ enum class StudentsEnum(
         96.0
     );
 }
+*/

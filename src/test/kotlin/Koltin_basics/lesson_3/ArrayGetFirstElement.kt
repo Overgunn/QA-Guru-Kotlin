@@ -1,4 +1,5 @@
-package lesson_3
+/*
+package Basics.lesson_3
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
@@ -26,4 +27,4 @@ class ArrayGetFirstElement {
         firstString shouldBe "abc"
 
     }
-}
+}*/

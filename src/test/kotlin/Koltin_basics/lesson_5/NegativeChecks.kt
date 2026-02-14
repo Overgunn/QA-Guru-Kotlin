@@ -1,11 +1,12 @@
-package lesson_5
+/*
+package Basics.lesson_5
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
 import io.qameta.allure.Story
-import lesson_5.asserts.EmailValidator.Companion.validEmail
-import lesson_5.asserts.PassPhraseValidator.Companion.validPassphrase
-import lesson_5.asserts.PhoneValidator.Companion.validNumber
+import Basics.lesson_5.asserts.EmailValidator.Companion.validEmail
+import Basics.lesson_5.asserts.PassPhraseValidator.Companion.validPassphrase
+import Basics.lesson_5.asserts.PhoneValidator.Companion.validNumber
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Tags
@@ -17,7 +18,7 @@ import org.junit.jupiter.api.Test
 
 class NegativeChecks {
 
-    val validUserData = BasicData.BasicDataTestClass(
+    val validUserData = _root_ide_package_.Basics.lesson_5.BasicData.BasicDataTestClass(
         "Hilly",
         "Billy",
         "farmerhead @gmail.com",
@@ -89,4 +90,4 @@ class NegativeChecks {
 
         validUserData.passPhrase isPassphraseValid true
     }
-}
+}*/

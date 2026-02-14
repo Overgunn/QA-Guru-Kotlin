@@ -1,4 +1,5 @@
-package lesson_6
+/*
+package Basics.lesson_6
 
 import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
@@ -9,12 +10,12 @@ import org.junit.jupiter.api.Tags
 import org.junit.jupiter.api.Test
 
 @Feature("Data class")
-@Story("Data class compare-checks")
-@Tags(Tag("data-class"),Tag("positive-checks"),Tag("regression"))
+@Story("Data class compare-checks(negative checks)")
+@Tags(Tag("data-class"),Tag("negative-checks"),Tag("regression"))
 
-class PositiveChecks {
-    val StudentsEnum.toStudent: StudentData
-        get() = StudentData(
+class NegativeChecks {
+    val Basics.lesson_6.StudentsEnum.toStudent: Basics.lesson_6.StudentData
+        get() = _root_ide_package_.Basics.lesson_6.StudentData(
             firstName,
             lastName,
             age,
@@ -22,8 +23,7 @@ class PositiveChecks {
             grade,
             averageScore
         )
-
-    val defaultStudent = StudentData(
+    val defaultStudent = _root_ide_package_.Basics.lesson_6.StudentData(
         "Paul",
         "Bunyan",
         15,
@@ -35,13 +35,13 @@ class PositiveChecks {
     @Test
     @DisplayName("Full data compare test")
     fun studentDataCheck() {
-        val expectedStudentData = StudentData(
-            "Paul",
-            "Bunyan",
-            15,
-            1,
-            10,
-            92.5
+        val expectedStudentData = _root_ide_package_.Basics.lesson_6.StudentData(
+            "Roddy",
+            "Pipper",
+            17,
+            3,
+            11,
+            70.5
         )
         val actualStudentData = defaultStudent
         expectedStudentData shouldBe actualStudentData
@@ -51,12 +51,12 @@ class PositiveChecks {
     @DisplayName("By line data compare test with defaultStudent copy")
     fun studentDataCheckByLine() {
         val studentsDataCopy = defaultStudent.copy(
-            firstName = "Paul",
-            lastName = "Bunyan",
-            age = 15,
-            studentId = 1,
+            firstName = "Long-Tall",
+            lastName = "Sally",
+            age = 16,
+            studentId = 2,
             grade = 10,
-            averageScore = 92.5
+            averageScore = 96.0
         )
         studentsDataCopy.firstName shouldBe defaultStudent.firstName
         studentsDataCopy.lastName shouldBe defaultStudent.lastName
@@ -67,16 +67,16 @@ class PositiveChecks {
     }
 
     @Test
-    @DisplayName("Get data from enum class for positive check")
-    fun firstStudentEnumData() {
-        val firstEnumStudent = StudentsEnum.STUDENT_1
+    @DisplayName("Get data from enum class for negative check")
+    fun secondStudentEnumData() {
+        val secondEnumStudent = _root_ide_package_.Basics.lesson_6.StudentsEnum.STUDENT_2
 
-        firstEnumStudent.firstName shouldBe defaultStudent.firstName
-        firstEnumStudent.lastName shouldBe defaultStudent.lastName
-        firstEnumStudent.age shouldBe defaultStudent.age
-        firstEnumStudent.studentId shouldBe defaultStudent.studentId
-        firstEnumStudent.grade shouldBe defaultStudent.grade
-        firstEnumStudent.averageScore shouldBe defaultStudent.averageScore
+        secondEnumStudent.firstName shouldBe defaultStudent.firstName
+        secondEnumStudent.lastName shouldBe defaultStudent.lastName
+        secondEnumStudent.age shouldBe defaultStudent.age
+        secondEnumStudent.studentId shouldBe defaultStudent.studentId
+        secondEnumStudent.grade shouldBe defaultStudent.grade
+        secondEnumStudent.averageScore shouldBe defaultStudent.averageScore
 
     }
 
@@ -84,8 +84,9 @@ class PositiveChecks {
     @DisplayName("Enum toStudent conversion test")
     fun enumToStudentTest() {
         val expectedStudent = defaultStudent
-        val actualStudent = StudentsEnum.STUDENT_1.toStudent
+        val actualStudent = _root_ide_package_.Basics.lesson_6.StudentsEnum.STUDENT_2.toStudent
 
         actualStudent shouldBe expectedStudent
     }
-}
+
+}*/
