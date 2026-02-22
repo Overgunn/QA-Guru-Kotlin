@@ -12,4 +12,11 @@ class HeaderComponent {
         linksHeader.first { it.text == name }.click()
         return this
     }
+
+    @Step("Пройти по всем ссылкам в хедере")
+    fun clickAllLinks(): HeaderComponent {
+        val linkNames = linksHeader.map { it.text }
+        linkNames.forEach { clickLink(it) }
+        return this
+    }
 }
