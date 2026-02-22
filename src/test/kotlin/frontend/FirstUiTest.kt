@@ -1,4 +1,0 @@
-package frontend
-
-class FirstUiTest {
-}
