@@ -9,7 +9,7 @@ class ContactPage {
     private val contactCard: SelenideElement
         get() = element(".contact-card")
 
-    @Step("Проверка 1ой строки в карточке контакта")
+    @Step("Check 1st text line in contact card")
     fun shouldHaveTitle(expectedText: String) {
         contactCard.shouldHave(text(expectedText))
     }

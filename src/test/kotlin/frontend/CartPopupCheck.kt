@@ -11,13 +11,13 @@ import org.junit.jupiter.api.Tags
 import org.junit.jupiter.api.Test
 
 @Feature("Cart Popup")
-@Story("FrontEnd: Cart popup windows basic check")
+@Story("FrontEnd: Cart popup window basic check")
 @Tags(Tag("cart-popup"),Tag("frontend"))
 
 class CartPopupCheck: BaseUiHelper() {
 
     @Test
-    @DisplayName("Проверка popup окна после нажатия на элемент Cart")
+    @DisplayName("Check popup window after clicking Cart header link")
     fun cartPopupClick() {
         MainPage().getHeader().clickLink("Cart")
         val cartPopup = CartPopup()

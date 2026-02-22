@@ -7,13 +7,13 @@ import io.qameta.allure.Step
 class HeaderComponent {
     val linksHeader get() = elements(byDataTestGroup("nav-link"))
 
-    @Step("Нажать на ссылку в шапке {name}")
+    @Step("Clicks header {name} link")
     fun clickLink(name: String): HeaderComponent {
         linksHeader.first { it.text == name }.click()
         return this
     }
 
-    @Step("Пройти по всем ссылкам в хедере")
+    @Step("Clicking all header links")
     fun clickAllLinks(): HeaderComponent {
         val linkNames = linksHeader.map { it.text }
         linkNames.forEach { clickLink(it) }

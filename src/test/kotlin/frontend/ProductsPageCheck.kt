@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test
 class ProductsPageCheck: BaseUiHelper() {
 
     @Test
-    @DisplayName("Проверка перехода на страницу Products и проверка наличия продуктов.")
+    @DisplayName("Header navigation check: go to Products page and check number of available products")
     fun productPageCheck() {
         MainPage().getHeader().clickLink("Products")
 

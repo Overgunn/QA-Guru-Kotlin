@@ -8,7 +8,7 @@ import io.qameta.allure.Step
 class ProductsPage {
     private val itemList get() = elements(byDataTestGroup("product-card"))
 
-    @Step("Получить список продуктов")
+    @Step("Get all products")
     fun getProducts(): ElementsCollection {
         return this.itemList
     }

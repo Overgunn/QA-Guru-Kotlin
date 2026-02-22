@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test
 class HeaderLinksCheck: BaseUiHelper() {
 
     @Test
-    @DisplayName("Кликаем все ссылки в хедере")
+    @DisplayName("Clicking all header links")
     fun allHeaderLinksCheck() {
         MainPage().getHeader().clickAllLinks()
     }

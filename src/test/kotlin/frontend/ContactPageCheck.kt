@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 class ContactPageCheck: BaseUiHelper() {
 
     @Test
-    @DisplayName("Проверка перехода на страницу Contact и содержимого страницы с контактом.")
+    @DisplayName("Header navigation check: go to Contact page and check 1st line text content")
     fun contactPageCheck() {
         MainPage().getHeader().clickLink("Contact")
 

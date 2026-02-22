@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test
 class MainPageCheck : BaseUiHelper() {
 
     @Test
-    @DisplayName("Проверка названия на главной странице")
+    @DisplayName("Check main page welcome title")
     fun mainPageCheck() {
         val title = MainPage()
             .getTitle()

@@ -1,6 +1,5 @@
 package frontend
 
-import com.codeborne.selenide.Selenide
 import frontend.helpers.BaseUiHelper
 import frontend.pages.MainPage
 import frontend.pages.OrdersPage
@@ -18,10 +17,9 @@ import org.junit.jupiter.api.Test
 class OrdersPageCheck: BaseUiHelper() {
 
     @Test
-    @DisplayName("Проверка навигации: Orders")
+    @DisplayName("Header navigation check: go to Orders page")
     fun ordersCheck() {
         MainPage().getHeader().clickLink("Orders")
-        Selenide.sleep(5000)
 
         val ordersPage = OrdersPage()
         ordersPage.shouldHaveCorrectPlaceholder()
