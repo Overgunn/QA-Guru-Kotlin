@@ -8,10 +8,12 @@ import org.junit.jupiter.api.BeforeEach
 open class BaseUiHelper {
 
     init {
-        Configuration.baseUrl = "http://localhost:4000"
-        Configuration.pageLoadStrategy = "normal"
+        Configuration.baseUrl = "https://www.youtube.com/"
+        /* Configuration.pageLoadStrategy = "normal"
         Configuration.reopenBrowserOnFail = true
-        Configuration.timeout = 5000
+        Configuration.timeout = 5000 */
+
+        Configuration.browser = DriverProvider::class.java.name
     }
 
     @BeforeEach
