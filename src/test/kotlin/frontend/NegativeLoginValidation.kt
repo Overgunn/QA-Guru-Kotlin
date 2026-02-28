@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.CsvSource
 class NegativeLoginValidation: BaseUiHelper() {
 
     @DisplayName("Parametrized login validation negative test")
-    @ParameterizedTest(name = "Email{0}, Password: {1}, Error: {2}")
+    @ParameterizedTest(name = "Email {0}, Password: {1}, Error: {2}")
     @CsvSource(
         "'', '', 'Please enter email and password'",
         "'1@1.com', '', 'Please enter email and password'",

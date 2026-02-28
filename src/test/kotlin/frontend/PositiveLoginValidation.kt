@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.CsvSource
 class PositiveLoginValidation: BaseUiHelper() {
 
     @DisplayName("Parametrized login validation positive test")
-    @ParameterizedTest(name = "Email{0}, Password: {1}")
+    @ParameterizedTest(name = "Email {0}, Password: {1}")
     @CsvSource(
         "'q', 'q'"
     )

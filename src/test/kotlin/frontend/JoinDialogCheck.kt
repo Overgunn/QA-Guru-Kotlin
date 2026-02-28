@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 class JoinDialogCheck: BaseUiHelper() {
 
     @Test
-    @DisplayName("Check popup window after clicking Join header button")
+    @DisplayName("Check popup window after clicking 'Join' header button")
     fun joinDialogPopup() {
         MainPage().getHeader().clickLink("Join")
         val joinPopup = JoinDialogPopup()

@@ -16,9 +16,9 @@ class CreateAccountPopup {
 
     @Step
     fun loginAs(username: String, email: String, password: String) {
-        usernameInput.setValue(username)
-        emailInput.setValue(email)
-        passwordInput.setValue(password)
+        usernameInput.value = username
+        emailInput.value = email
+        passwordInput.value = password
         submitButton.click()
     }
     @Step
