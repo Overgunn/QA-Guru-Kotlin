@@ -1,3 +1,4 @@
+/*
 package frontend.helpers
 
 import com.codeborne.selenide.Configuration
@@ -40,4 +41,4 @@ open class DriverProvider: WebDriverProvider {
     .run { RemoteWebDriver(URI("https://user1:1234@selenoid.autotests.cloud/wd/hub").toURL(), this) }
             .apply {this.fileDetector = LocalFileDetector()}
     }
-}
+}*/
