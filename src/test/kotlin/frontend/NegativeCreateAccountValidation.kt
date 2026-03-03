@@ -1,8 +1,8 @@
 package frontend
 
 import frontend.helpers.BaseUiHelper
-import frontend.pages.CreateAccountPopup
-import frontend.pages.JoinDialogPopup
+import frontend.components.CreateAccountPopup
+import frontend.components.JoinDialogPopup
 import frontend.pages.MainPage
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
@@ -22,11 +22,11 @@ class NegativeCreateAccountValidation: BaseUiHelper() {
 
         MainPage().getHeader().clickLink("Join")
 
-        val joinPopup = JoinDialogPopup()
-        joinPopup.shouldBeVisible()
+        JoinDialogPopup()
+        .shouldBeVisible()
 
-        val loginPopup = CreateAccountPopup()
-        loginPopup.loginAs(username, email, password)
-        loginPopup.shouldHaveError(expectedError)
+        CreateAccountPopup()
+            .loginAs(username, email, password)
+            .shouldHaveError(expectedError)
     }
 }

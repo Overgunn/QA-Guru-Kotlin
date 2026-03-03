@@ -1,7 +1,7 @@
 package frontend
 
 import frontend.helpers.BaseUiHelper
-import frontend.pages.CartPopup
+import frontend.components.CartPopup
 import frontend.pages.MainPage
 import io.qameta.allure.Feature
 import io.qameta.allure.Story

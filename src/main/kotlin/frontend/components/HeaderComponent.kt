@@ -12,4 +12,9 @@ class HeaderComponent {
         linksHeader.first { it.text == name }.click()
         return this
     }
+
+    @Step("Get all header link names")
+    fun getLinkNames(): List<String> {
+        return linksHeader.map { it.text }
+    }
 }

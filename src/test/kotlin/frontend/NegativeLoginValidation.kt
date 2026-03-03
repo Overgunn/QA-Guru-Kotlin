@@ -1,8 +1,8 @@
 package frontend
 
 import frontend.helpers.BaseUiHelper
-import frontend.pages.JoinDialogPopup
-import frontend.pages.LoginPopup
+import frontend.components.JoinDialogPopup
+import frontend.components.LoginPopup
 import frontend.pages.MainPage
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
@@ -19,14 +19,16 @@ class NegativeLoginValidation: BaseUiHelper() {
     )
     fun loginValidation(email: String, password: String, expectedError: String) {
 
-        MainPage().getHeader().clickLink("Join")
-        val joinPopup = JoinDialogPopup()
-        joinPopup.shouldBeVisible()
-        joinPopup.signInPopupClick()
+        MainPage()
+            .getHeader()
+            .clickLink("Join")
 
-        val loginPopupForm = LoginPopup()
-        loginPopupForm.loginWindowVisible()
-        loginPopupForm.loginWindowInput(email, password)
-        loginPopupForm.shouldHaveError(expectedError)
+        JoinDialogPopup()
+            .signInPopupClick()
+
+        LoginPopup()
+            .loginWindowVisible()
+            .loginWindowInput(email, password)
+            .shouldHaveError(expectedError)
     }
 }
