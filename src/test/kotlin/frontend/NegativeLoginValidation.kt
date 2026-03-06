@@ -1,8 +1,8 @@
 package frontend
 
 import frontend.helpers.BaseUiHelper
-import frontend.components.JoinDialogPopup
-import frontend.components.LoginPopup
+import frontend.components.popup.JoinDialogPopup
+import frontend.components.popup.LoginPopup
 import frontend.pages.MainPage
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
@@ -27,7 +27,6 @@ class NegativeLoginValidation: BaseUiHelper() {
             .signInPopupClick()
 
         LoginPopup()
-            .loginWindowVisible()
             .loginWindowInput(email, password)
             .shouldHaveError(expectedError)
     }

@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test
 @Story("FrontEnd: Products page basic check")
 @Tags(Tag("Products-page"),Tag("frontend"))
 
-class ProductsPageCheck: BaseUiHelper() {
+class ProductsPageTest: BaseUiHelper() {
 
     @Test
     @DisplayName("Header navigation check: go to Products page and check number of available products")

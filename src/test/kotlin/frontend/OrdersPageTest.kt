@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test
 @Story("FrontEnd: Orders page basic check")
 @Tags(Tag("Orders-page"),Tag("frontend"))
 
-class OrdersPageCheck: BaseUiHelper() {
+class OrdersPageTest: BaseUiHelper() {
 
     @Test
     @DisplayName("Header navigation check: go to Orders page")

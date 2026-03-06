@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
-class HeaderLinksCheck: BaseUiHelper() {
+class HeaderLinksTest: BaseUiHelper() {
 
     @ParameterizedTest
     @ValueSource(strings = ["Brew & Bean", "Products", "Orders", "Cart", "Contact"])

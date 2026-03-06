@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test
 @Story("FrontEnd: Contact page basic check")
 @Tags(Tag("Contact-page"),Tag("frontend"))
 
-class ContactPageCheck: BaseUiHelper() {
+class ContactPageTest: BaseUiHelper() {
 
     @Test
     @DisplayName("Header navigation check: go to Contact page and check 1st line text content")

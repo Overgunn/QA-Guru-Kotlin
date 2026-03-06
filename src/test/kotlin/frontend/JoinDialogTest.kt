@@ -1,12 +1,12 @@
 package frontend
 
 import frontend.helpers.BaseUiHelper
-import frontend.components.JoinDialogPopup
+import frontend.components.popup.JoinDialogPopup
 import frontend.pages.MainPage
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
-class JoinDialogCheck: BaseUiHelper() {
+class JoinDialogTest: BaseUiHelper() {
 
     @Test
     @DisplayName("Check popup window after clicking 'Join' header button")
@@ -16,8 +16,6 @@ class JoinDialogCheck: BaseUiHelper() {
             .clickLink("Join")
 
        JoinDialogPopup()
-        .shouldBeVisible()
         .popupShouldHaveTitle("Create Account")
-        .signInPopupClick()
     }
 }

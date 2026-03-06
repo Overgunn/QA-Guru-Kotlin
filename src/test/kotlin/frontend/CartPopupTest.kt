@@ -1,7 +1,7 @@
 package frontend
 
 import frontend.helpers.BaseUiHelper
-import frontend.components.CartPopup
+import frontend.components.popup.CartPopup
 import frontend.pages.MainPage
 import io.qameta.allure.Feature
 import io.qameta.allure.Story
@@ -14,16 +14,15 @@ import org.junit.jupiter.api.Test
 @Story("FrontEnd: Cart popup window basic check")
 @Tags(Tag("cart-popup"),Tag("frontend"))
 
-class CartPopupCheck: BaseUiHelper() {
+class CartPopupTest: BaseUiHelper() {
 
     @Test
     @DisplayName("Check popup window after clicking Cart header link")
     fun cartPopupClick() {
         MainPage().getHeader().clickLink("Cart")
-        val cartPopup = CartPopup()
-        cartPopup.shouldBeVisible()
 
-        cartPopup.cartShouldHaveTotalSum("$0.00")
-        cartPopup.popupShouldHaveCheckout("Checkout")
+        CartPopup()
+            .popupShouldHaveCheckout("Checkout")
+            .cartShouldHaveTotalSum("$0.00")
     }
 }

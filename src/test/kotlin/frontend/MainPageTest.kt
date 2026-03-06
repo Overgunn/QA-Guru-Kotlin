@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test
 @Story("FrontEnd: Main page basic check")
 @Tags(Tag("Main-page"),Tag("frontend"))
 
-class MainPageCheck : BaseUiHelper() {
+class MainPageTest : BaseUiHelper() {
 
     @Test
     @DisplayName("Check main page welcome title")

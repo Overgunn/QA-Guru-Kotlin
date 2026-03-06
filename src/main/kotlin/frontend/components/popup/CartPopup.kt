@@ -1,4 +1,4 @@
-package frontend.components
+package frontend.components.popup
 
 import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Selenide.element
@@ -16,12 +16,14 @@ class CartPopup {
     }
 
     @Step("Check sum value in popup window")
-    fun cartShouldHaveTotalSum(expectedText: String) {
+    fun cartShouldHaveTotalSum(expectedText: String): CartPopup {
         cartPopupTotalSum.shouldHave(Condition.text(expectedText))
+        return this
     }
 
     @Step("Checkout button text check")
-    fun popupShouldHaveCheckout(expectedSum: String) {
+    fun popupShouldHaveCheckout(expectedSum: String): CartPopup {
         cartPopupButton.shouldHave(Condition.text(expectedSum))
+        return this
     }
 }
