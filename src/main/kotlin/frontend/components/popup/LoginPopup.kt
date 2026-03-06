@@ -7,7 +7,7 @@ import frontend.helpers.Wrappers.Companion.byDataTestId
 import io.qameta.allure.Step
 
 class LoginPopup {
-    private val loginWindowTitle get() = element((".dialog > div:nth-child(2)"))
+    private val loginWindowTitle get() = element(byDataTestId("login"))
     private val emailInputLogin get() = element(shadowCss("input", "[data-test-id='login-email']"))
     private val passwordInputLogin get() = element(shadowCss("input", "[data-test-id='login-password']"))
     private val loginButtong get() = element(byDataTestId("login-submit"))
