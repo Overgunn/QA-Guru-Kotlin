@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
-class NegativeLoginValidation: BaseUiHelper() {
+class NegativeLoginTest: BaseUiHelper() {
 
     @DisplayName("Parametrized login validation negative test")
     @ParameterizedTest(name = "Email {0}, Password: {1}, Error: {2}")

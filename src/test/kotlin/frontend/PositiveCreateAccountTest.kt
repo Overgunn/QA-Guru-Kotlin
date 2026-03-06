@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
-class PositiveCreateAccountValidation: BaseUiHelper() {
+class PositiveCreateAccountTest: BaseUiHelper() {
 
     @DisplayName("Parametrized create account validation positive test")
     @ParameterizedTest(name = "Username: {0}, Email{1}, Password: {2}")
