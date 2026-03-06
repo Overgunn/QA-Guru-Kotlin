@@ -4,11 +4,12 @@ import frontend.helpers.BaseUiHelper
 import frontend.components.popup.JoinDialogPopup
 import frontend.components.popup.LoginPopup
 import frontend.pages.MainPage
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
-class PositiveLoginValidation: BaseUiHelper() {
+class PositiveLoginTest: BaseUiHelper() {
 
     @DisplayName("Parametrized login validation positive test")
     @ParameterizedTest(name = "Email {0}, Password: {1}")
@@ -26,5 +27,8 @@ class PositiveLoginValidation: BaseUiHelper() {
 
         LoginPopup()
             .loginWindowInput(email, password)
+
+        val isVisible = MainPage().getHeader().checkUserPic()
+        isVisible shouldBe true
     }
 }

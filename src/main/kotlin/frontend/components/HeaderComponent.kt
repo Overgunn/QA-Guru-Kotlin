@@ -1,13 +1,13 @@
 package frontend.components
 
-import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Selenide.element
 import com.codeborne.selenide.Selenide.elements
 import frontend.helpers.Wrappers.Companion.byDataTestGroup
+import frontend.helpers.Wrappers.Companion.shouldBeVisible
 import io.qameta.allure.Step
 
 class HeaderComponent {
-    val linksHeader get() = elements(byDataTestGroup("nav-link"))
+    private val linksHeader get() = elements(byDataTestGroup("nav-link"))
     private val headerUserPic get() = element((".avatar"))
 
     @Step("Clicks header {name} link")
@@ -21,9 +21,8 @@ class HeaderComponent {
         return linksHeader.map { it.text }
     }
 
-    @Step("Check if user is logged in")
-    fun checkIfUserIsLoggedIn(): HeaderComponent {
-        headerUserPic.shouldBe(Condition.visible)
-        return this
+    @Step("Checks if avatar is present on the header after successful logging in")
+    fun checkUserPic(): Boolean {
+        return headerUserPic.shouldBeVisible()
     }
 }
