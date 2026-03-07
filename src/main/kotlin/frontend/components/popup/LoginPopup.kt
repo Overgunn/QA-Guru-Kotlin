@@ -8,8 +8,8 @@ import io.qameta.allure.Step
 
 class LoginPopup {
     private val loginWindowTitle get() = element(byDataTestId("login"))
-    private val emailInputLogin get() = element(shadowCss("input", "[data-test-id='login-email']"))
-    private val passwordInputLogin get() = element(shadowCss("input", "[data-test-id='login-password']"))
+    private val emailInputLogin get() = element(byDataTestId("login-email")).find(shadowCss(".input"))
+    private val passwordInputLogin get() = element(byDataTestId("login-password")).find(shadowCss(".input"))
     private val loginButtong get() = element(byDataTestId("login-submit"))
     private val errorMessageLogin get() = element(byDataTestId("login-error"))
 

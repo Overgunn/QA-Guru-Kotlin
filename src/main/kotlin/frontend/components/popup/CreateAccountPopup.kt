@@ -7,9 +7,10 @@ import frontend.helpers.Wrappers.Companion.byDataTestId
 import io.qameta.allure.Step
 
 class CreateAccountPopup {
-    private val usernameInput get() = element( shadowCss("input", "[data-test-id='create-username']"))
-    private val emailInput get() = element(shadowCss("input", "[data-test-id='create-email']"))
-    private val passwordInput get() = element(shadowCss("input", "[data-test-id='create-password']"))
+
+    private val usernameInput get() = element(byDataTestId("create-username")).find(shadowCss(".input"))
+    private val emailInput get() = element(byDataTestId("create-email")).find(shadowCss(".input"))
+    private val passwordInput get() = element(byDataTestId("create-password")).find(shadowCss(".input"))
     private val submitButton get() = element(byDataTestId("create-submit"))
     private val errorMessage get() = element(byDataTestId("create-error"))
     private val headerUserPic get() = element((".avatar"))
