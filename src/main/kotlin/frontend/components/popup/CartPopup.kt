@@ -6,14 +6,8 @@ import frontend.helpers.Wrappers.Companion.byDataTestId
 import io.qameta.allure.Step
 
 class CartPopup {
-    private val cartPopup get() = element(".cart-popup")
     private val cartPopupTotalSum get() = element(byDataTestId("cart-total-price"))
     private val cartPopupButton get() = element(byDataTestId("cart-checkout"))
-
-    @Step("Check if cart-popup is visible")
-    fun shouldBeVisible() {
-        cartPopup.shouldBe(Condition.visible)
-    }
 
     @Step("Check sum value in popup window")
     fun cartShouldHaveTotalSum(expectedText: String): CartPopup {
