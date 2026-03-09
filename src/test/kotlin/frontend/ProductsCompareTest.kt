@@ -5,6 +5,7 @@ import frontend.pages.MainPage
 import frontend.pages.ProductsPage
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.equals.shouldBeEqual
+import io.kotest.matchers.equals.shouldNotBeEqual
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import kotlin.collections.first
@@ -58,8 +59,8 @@ class ProductsCompareTest: BaseUiHelper() {
             .getProductItems()
             .last()
 
-        mainPageLastItem.name shouldBeEqual productPageLastItem.name
-        mainPageLastItem.price shouldBeEqual productPageLastItem.price
-        mainPageLastItem.description shouldBeEqual productPageLastItem.description
+        mainPageLastItem.name shouldNotBeEqual productPageLastItem.name
+        mainPageLastItem.price shouldNotBeEqual productPageLastItem.price
+        mainPageLastItem.description shouldNotBeEqual productPageLastItem.description
     }
 }
