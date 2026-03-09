@@ -19,7 +19,7 @@ class OrdersPageTest: BaseUiHelper() {
     @Test
     @DisplayName("Header navigation check: go to Orders page")
     fun ordersCheck() {
-        MainPage().getHeader().clickLink("Orders")
+        MainPage().navigateHeader().clickLink("Orders")
 
         val ordersPage = OrdersPage()
         ordersPage.shouldHaveCorrectPlaceholder()

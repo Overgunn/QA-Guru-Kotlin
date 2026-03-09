@@ -20,7 +20,7 @@ class NegativeLoginTest: BaseUiHelper() {
     fun loginValidation(email: String, password: String, expectedError: String) {
 
         MainPage()
-            .getHeader()
+            .navigateHeader()
             .clickLink("Join")
 
         JoinDialogPopup()

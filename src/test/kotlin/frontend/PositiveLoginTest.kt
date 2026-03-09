@@ -19,7 +19,7 @@ class PositiveLoginTest: BaseUiHelper() {
     fun loginValidation(email: String, password: String) {
 
         MainPage()
-            .getHeader()
+            .navigateHeader()
             .clickLink("Join")
 
         JoinDialogPopup()
@@ -28,7 +28,7 @@ class PositiveLoginTest: BaseUiHelper() {
         LoginPopup()
             .loginWindowInput(email, password)
 
-        val isVisible = MainPage().getHeader().checkUserPic()
+        val isVisible = MainPage().navigateHeader().checkUserPic()
         isVisible shouldBe true
     }
 }

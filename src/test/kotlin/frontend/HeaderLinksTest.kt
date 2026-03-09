@@ -14,7 +14,7 @@ class HeaderLinksTest: BaseUiHelper() {
     @DisplayName("Header contains exactly the expected links")
     fun allHeaderLinksCheck(expectedLinks: String) {
         val actualLinks = MainPage()
-            .getHeader()
+            .navigateHeader()
             .getLinkNames()
 
         actualLinks shouldContain expectedLinks

@@ -2,8 +2,9 @@ package frontend.components
 
 import com.codeborne.selenide.Selenide.element
 import com.codeborne.selenide.Selenide.elements
+import frontend.components.popup.CartPopup
+import frontend.helpers.Extensions.Companion.shouldBeVisible
 import frontend.helpers.Wrappers.Companion.byDataTestGroup
-import frontend.helpers.Wrappers.Companion.shouldBeVisible
 import io.qameta.allure.Step
 
 class HeaderComponent {
@@ -12,7 +13,7 @@ class HeaderComponent {
 
     @Step("Clicks header {name} link")
     fun clickLink(name: String): HeaderComponent {
-        linksHeader.first { it.text == name }.click()
+        linksHeader.first { it.text.contains(name)}.click()
         return this
     }
 
@@ -24,5 +25,10 @@ class HeaderComponent {
     @Step("Checks if avatar is present on the header after successful logging in")
     fun checkUserPic(): Boolean {
         return headerUserPic.shouldBeVisible()
+    }
+
+    @Step("Get cart popup")
+    fun navigateCartPopup(): CartPopup {
+        return CartPopup()
     }
 }

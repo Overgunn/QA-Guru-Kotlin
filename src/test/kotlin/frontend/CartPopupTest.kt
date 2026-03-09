@@ -19,10 +19,10 @@ class CartPopupTest: BaseUiHelper() {
     @Test
     @DisplayName("Check popup window after clicking Cart header link")
     fun cartPopupClick() {
-        MainPage().getHeader().clickLink("Cart")
+        MainPage().navigateHeader().clickLink("Cart")
 
         CartPopup()
-            .popupShouldHaveCheckout("Checkout")
+            .popupCheckoutButton("Checkout")
             .cartShouldHaveTotalSum("$0.00")
     }
 }

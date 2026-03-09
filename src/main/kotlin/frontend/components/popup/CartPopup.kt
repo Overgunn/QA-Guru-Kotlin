@@ -7,7 +7,7 @@ import io.qameta.allure.Step
 
 class CartPopup {
     private val cartPopupTotalSum get() = element(byDataTestId("cart-total-price"))
-    private val cartPopupButton get() = element(byDataTestId("cart-checkout"))
+    private val cartCheckoutButton get() = element(byDataTestId("cart-checkout"))
 
     @Step("Check sum value in popup window")
     fun cartShouldHaveTotalSum(expectedText: String): CartPopup {
@@ -16,8 +16,13 @@ class CartPopup {
     }
 
     @Step("Checkout button text check")
-    fun popupShouldHaveCheckout(expectedSum: String): CartPopup {
-        cartPopupButton.shouldHave(Condition.text(expectedSum))
+    fun popupCheckoutButton(expectedSum: String): CartPopup {
+        cartCheckoutButton.shouldHave(Condition.text(expectedSum))
         return this
+    }
+
+    @Step("Get cart total price")
+    fun getTotalPrice(): Float {
+        return cartPopupTotalSum.text.filter {it.isDigit()}.toFloat() / 100f
     }
 }

@@ -19,7 +19,7 @@ class NegativeCreateAccountTest: BaseUiHelper() {
     )
     fun createAccountValidation(username: String, email: String, password: String, expectedError: String) {
 
-        MainPage().getHeader().clickLink("Join")
+        MainPage().navigateHeader().clickLink("Join")
 
         CreateAccountPopup()
             .loginAs(username, email, password)

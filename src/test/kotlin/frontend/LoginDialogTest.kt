@@ -13,7 +13,7 @@ class LoginDialogTest: BaseUiHelper() {
     @DisplayName("Check after clicking 'Your account' link  in 'Join' popup window")
     fun loginDialogPopup() {
         MainPage()
-            .getHeader()
+            .navigateHeader()
             .clickLink("Join")
 
         JoinDialogPopup()

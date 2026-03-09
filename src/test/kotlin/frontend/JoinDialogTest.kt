@@ -12,7 +12,7 @@ class JoinDialogTest: BaseUiHelper() {
     @DisplayName("Check popup window after clicking 'Join' header button")
     fun joinDialogPopup() {
         MainPage()
-            .getHeader()
+            .navigateHeader()
             .clickLink("Join")
 
        JoinDialogPopup()

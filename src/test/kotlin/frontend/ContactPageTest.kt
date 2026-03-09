@@ -19,7 +19,7 @@ class ContactPageTest: BaseUiHelper() {
     @Test
     @DisplayName("Header navigation check: go to Contact page and check 1st line text content")
     fun contactPageCheck() {
-        MainPage().getHeader().clickLink("Contact")
+        MainPage().navigateHeader().clickLink("Contact")
 
         val contactPage = ContactPage()
         contactPage.shouldHaveTitle("Testing Playground Frontend")

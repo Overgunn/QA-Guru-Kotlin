@@ -20,9 +20,12 @@ class ProductsPageTest: BaseUiHelper() {
     @Test
     @DisplayName("Header navigation check: go to Products page and check number of available products")
     fun productPageCheck() {
-        MainPage().getHeader().clickLink("Products")
+        MainPage().navigateHeader().clickLink("Products")
 
-        val products = ProductsPage().getProducts()
-        products shouldHaveSize 4
+        ProductsPage()
+        .shouldHaveTitle("All Products")
+
+        val products = ProductsPage().getProductsItems()
+        products shouldHaveSize 5
     }
 }
