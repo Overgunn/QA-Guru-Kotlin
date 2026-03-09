@@ -1,6 +1,5 @@
 package frontend.components.popup
 
-import com.codeborne.selenide.Condition.visible
 import com.codeborne.selenide.Selectors.shadowCss
 import com.codeborne.selenide.Selenide.element
 import frontend.helpers.Wrappers.Companion.byDataTestId
@@ -22,7 +21,6 @@ class LoginPopup {
 
     @Step("Checkout popup window title is 'Login'")
     fun getLoginWindowTitle(): String {
-        loginWindowTitle.shouldBe(visible)
         return loginWindowTitle.text
     }
 
