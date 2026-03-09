@@ -1,6 +1,6 @@
 package frontend.components.popup
 
-import com.codeborne.selenide.Condition
+import com.codeborne.selenide.Condition.visible
 import com.codeborne.selenide.Selenide.element
 import frontend.helpers.Wrappers.Companion.byDataTestId
 import io.qameta.allure.Step
@@ -10,15 +10,15 @@ class CartPopup {
     private val cartCheckoutButton get() = element(byDataTestId("cart-checkout"))
 
     @Step("Check sum value in popup window")
-    fun cartShouldHaveTotalSum(expectedText: String): CartPopup {
-        cartPopupTotalSum.shouldHave(Condition.text(expectedText))
-        return this
+    fun cartShouldHaveTotalSum(): String {
+        cartPopupTotalSum.shouldBe(visible)
+        return cartPopupTotalSum.text
     }
 
     @Step("Checkout button text check")
-    fun popupCheckoutButton(expectedSum: String): CartPopup {
-        cartCheckoutButton.shouldHave(Condition.text(expectedSum))
-        return this
+    fun cartButtonText(): String {
+        cartCheckoutButton.shouldBe(visible)
+        return cartCheckoutButton.text
     }
 
     @Step("Get cart total price")

@@ -3,6 +3,7 @@ package frontend
 import frontend.helpers.BaseUiHelper
 import frontend.pages.ContactPage
 import frontend.pages.MainPage
+import io.kotest.matchers.string.shouldContain
 import io.qameta.allure.Feature
 import io.qameta.allure.Story
 import org.junit.jupiter.api.DisplayName
@@ -21,7 +22,7 @@ class ContactPageTest: BaseUiHelper() {
     fun contactPageCheck() {
         MainPage().navigateHeader().clickLink("Contact")
 
-        val contactPage = ContactPage()
-        contactPage.shouldHaveTitle("Testing Playground Frontend")
+        ContactPage()
+        .getContactTitle() shouldContain "Testing Playground Frontend"
     }
 }

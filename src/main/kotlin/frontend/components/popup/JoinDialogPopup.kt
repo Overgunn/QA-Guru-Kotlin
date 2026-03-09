@@ -1,6 +1,6 @@
 package frontend.components.popup
 
-import com.codeborne.selenide.Condition
+import com.codeborne.selenide.Condition.visible
 import com.codeborne.selenide.Selenide.element
 import frontend.helpers.Wrappers.Companion.byDataTestId
 import io.qameta.allure.Step
@@ -10,9 +10,9 @@ class JoinDialogPopup {
     private val joinDialogPopupCreate get() = element(byDataTestId("create-login"))
 
     @Step("Checkout popup window title is 'Create Account'")
-    fun popupShouldHaveTitle(popupWindowTitle: String): JoinDialogPopup {
-        joinDialogPopupTitle.shouldHave(Condition.text(popupWindowTitle))
-        return this
+    fun getTitle(): String {
+        joinDialogPopupTitle.shouldBe(visible)
+        return joinDialogPopupTitle.text
     }
     @Step("Click 'Log in to your account' link")
     fun signInPopupClick(): JoinDialogPopup {

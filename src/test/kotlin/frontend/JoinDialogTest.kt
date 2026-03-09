@@ -3,6 +3,7 @@ package frontend
 import frontend.helpers.BaseUiHelper
 import frontend.components.popup.JoinDialogPopup
 import frontend.pages.MainPage
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
@@ -15,7 +16,7 @@ class JoinDialogTest: BaseUiHelper() {
             .navigateHeader()
             .clickLink("Join")
 
-       JoinDialogPopup()
-        .popupShouldHaveTitle("Create Account")
+        JoinDialogPopup()
+            .getTitle() shouldBe "Create Account"
     }
 }

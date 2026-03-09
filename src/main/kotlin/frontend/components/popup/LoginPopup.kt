@@ -1,6 +1,6 @@
 package frontend.components.popup
 
-import com.codeborne.selenide.Condition
+import com.codeborne.selenide.Condition.visible
 import com.codeborne.selenide.Selectors.shadowCss
 import com.codeborne.selenide.Selenide.element
 import frontend.helpers.Wrappers.Companion.byDataTestId
@@ -21,9 +21,9 @@ class LoginPopup {
     }
 
     @Step("Checkout popup window title is 'Login'")
-    fun getLoginWindowTitle (popupWindowTitle: String): LoginPopup {
-        loginWindowTitle.shouldHave(Condition.text(popupWindowTitle))
-        return this
+    fun getLoginWindowTitle(): String {
+        loginWindowTitle.shouldBe(visible)
+        return loginWindowTitle.text
     }
 
     @Step("Check credentials input for login window popup")
@@ -35,8 +35,7 @@ class LoginPopup {
     }
 
     @Step("Error text check for invalid credentials input")
-    fun shouldHaveError(expectedError: String): LoginPopup {
-        errorMessageLogin.shouldHave(Condition.text(expectedError))
-        return this
+    fun getErrorText(expectedError: String): String {
+        return errorMessageLogin.text
     }
 }

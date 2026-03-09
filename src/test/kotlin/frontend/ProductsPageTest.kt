@@ -4,6 +4,7 @@ import frontend.helpers.BaseUiHelper
 import frontend.pages.MainPage
 import frontend.pages.ProductsPage
 import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
 import io.qameta.allure.Story
 import org.junit.jupiter.api.DisplayName
@@ -23,9 +24,9 @@ class ProductsPageTest: BaseUiHelper() {
         MainPage().navigateHeader().clickLink("Products")
 
         ProductsPage()
-        .shouldHaveTitle("All Products")
+            .shouldHaveTitle() shouldBe "All Products"
 
-        val products = ProductsPage().getProductItems()
-        products shouldHaveSize 5
+        ProductsPage()
+            .getProductItems() shouldHaveSize 5
     }
 }

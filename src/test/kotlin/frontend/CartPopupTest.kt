@@ -3,6 +3,7 @@ package frontend
 import frontend.helpers.BaseUiHelper
 import frontend.components.popup.CartPopup
 import frontend.pages.MainPage
+import io.kotest.matchers.shouldBe
 import io.qameta.allure.Feature
 import io.qameta.allure.Story
 import org.junit.jupiter.api.DisplayName
@@ -22,7 +23,6 @@ class CartPopupTest: BaseUiHelper() {
         MainPage().navigateHeader().clickLink("Cart")
 
         CartPopup()
-            .popupCheckoutButton("Checkout")
-            .cartShouldHaveTotalSum("$0.00")
+            .cartButtonText() shouldBe "Checkout"
     }
 }

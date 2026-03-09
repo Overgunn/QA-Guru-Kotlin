@@ -1,6 +1,5 @@
 package frontend.pages
 
-import com.codeborne.selenide.Condition.text
 import com.codeborne.selenide.ElementsCollection
 import com.codeborne.selenide.Selenide.element
 import com.codeborne.selenide.Selenide.elements
@@ -16,8 +15,8 @@ class ProductsPage {
     private val listProductItems: ElementsCollection get() = elements(byDataTestGroup("product-card"))
 
     @Step("Check product page title")
-    fun shouldHaveTitle(expectedText: String) {
-        productPageTitle.shouldHave(text(expectedText))
+    fun shouldHaveTitle(): String {
+        return productPageTitle.text
     }
 
     @Step("Get products object list")

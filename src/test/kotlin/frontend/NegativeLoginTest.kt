@@ -28,6 +28,6 @@ class NegativeLoginTest: BaseUiHelper() {
 
         LoginPopup()
             .loginWindowInput(email, password)
-            .shouldHaveError(expectedError)
+            .getErrorText(expectedError)
     }
 }

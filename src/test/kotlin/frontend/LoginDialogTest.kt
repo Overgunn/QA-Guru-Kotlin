@@ -4,6 +4,7 @@ import frontend.helpers.BaseUiHelper
 import frontend.components.popup.JoinDialogPopup
 import frontend.components.popup.LoginPopup
 import frontend.pages.MainPage
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
@@ -20,6 +21,6 @@ class LoginDialogTest: BaseUiHelper() {
             .signInPopupClick()
 
         LoginPopup()
-            .getLoginWindowTitle("Login")
+            .getLoginWindowTitle() shouldBe "Login"
     }
 }

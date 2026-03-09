@@ -23,6 +23,6 @@ class NegativeCreateAccountTest: BaseUiHelper() {
 
         CreateAccountPopup()
             .loginAs(username, email, password)
-            .shouldHaveError(expectedError)
+            .getErrorMessage(expectedError)
     }
 }
