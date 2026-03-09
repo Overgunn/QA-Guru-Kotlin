@@ -1,15 +1,13 @@
 package frontend.components.list
 
-import com.codeborne.selenide.Selenide.elements
+import com.codeborne.selenide.ElementsCollection
 import com.codeborne.selenide.SelenideElement
 import frontend.helpers.Wrappers.Companion.byDataTestGroup
 import frontend.helpers.Extensions.Companion.toMoney
 
-class ProductItems {
-    private val listProducts = elements(byDataTestGroup("product-card"))
-
+class ProductCard (val items: ElementsCollection) {
     fun getItems(): List<ProductItem> {
-        return listProducts
+        return items
             .map {
                 ProductItem(
                 image = it.find(byDataTestGroup("product-card-image")),

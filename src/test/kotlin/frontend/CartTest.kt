@@ -1,7 +1,7 @@
 package frontend
 
 import frontend.components.list.CartItems
-import frontend.components.list.PopularItem
+import frontend.components.list.ProductItem
 import frontend.helpers.BaseUiHelper
 import frontend.pages.MainPage
 import io.kotest.matchers.equality.shouldBeEqualToDifferentTypeIgnoringFields
@@ -14,6 +14,7 @@ class CartTest: BaseUiHelper() {
     @DisplayName("Check items in cart")
     fun `adding items in cart from main page`(){
         val lastPopularItem = MainPage()
+            .open()
             .getPopularProducts()
             .last()
 
@@ -25,10 +26,10 @@ MainPage().navigateHeader().clickLink("Cart")
         lastPopularItem.apply {quantity = 1}
             .shouldBeEqualToDifferentTypeIgnoringFields(
             lastCartItem,
-            PopularItem::description,
-            PopularItem::btnIncrement,
-            PopularItem::btnDecrement,
-            PopularItem::image
+                ProductItem::description,
+                ProductItem::btnIncrement,
+                ProductItem::btnDecrement,
+                ProductItem::image
         )
     }
 }

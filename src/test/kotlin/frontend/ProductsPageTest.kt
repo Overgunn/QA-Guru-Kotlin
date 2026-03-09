@@ -25,7 +25,7 @@ class ProductsPageTest: BaseUiHelper() {
         ProductsPage()
         .shouldHaveTitle("All Products")
 
-        val products = ProductsPage().getProductsItems()
+        val products = ProductsPage().getProductItems()
         products shouldHaveSize 5
     }
 }
