@@ -5,7 +5,6 @@ import frontend.pages.MainPage
 import frontend.pages.ProductsPage
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.equals.shouldBeEqual
-import io.kotest.matchers.equals.shouldNotBeEqual
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import kotlin.collections.first
@@ -24,7 +23,7 @@ class ProductsCompareTest: BaseUiHelper() {
         MainPage().navigateHeader().clickLink("Products")
 
         val productPageItems = ProductsPage().getProductItems().map{ it.name }
-        mainPageItems shouldContainAll productPageItems
+        productPageItems shouldContainAll mainPageItems
     }
 
     @Test
@@ -40,12 +39,14 @@ class ProductsCompareTest: BaseUiHelper() {
             .getProductItems()
             .first()
 
-        mainPageFirstItem shouldBeEqual productPageFirstItem
+        mainPageFirstItem.name shouldBeEqual productPageFirstItem.name
+        mainPageFirstItem.price shouldBeEqual productPageFirstItem.price
+        mainPageFirstItem.description shouldBeEqual productPageFirstItem.description
     }
 
 
     @Test
-    @DisplayName("Compare last item from main page with last item on product page")
+    @DisplayName("Compare last item name from main page with last item name on product page")
     fun `comparing last item from main page with last item on product page`(){
         val mainPageLastItem = MainPage()
             .open()
@@ -53,11 +54,12 @@ class ProductsCompareTest: BaseUiHelper() {
             .last()
 
         MainPage().navigateHeader().clickLink("Products")
-
         val productPageLastItem = ProductsPage()
             .getProductItems()
             .last()
 
-        mainPageLastItem shouldNotBeEqual productPageLastItem
+        mainPageLastItem.name shouldBeEqual productPageLastItem.name
+        mainPageLastItem.price shouldBeEqual productPageLastItem.price
+        mainPageLastItem.description shouldBeEqual productPageLastItem.description
     }
 }
