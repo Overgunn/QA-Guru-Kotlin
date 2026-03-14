@@ -33,21 +33,34 @@ test {
 }
 
 dependencies {
-    implementation 'junit:junit:4.12'
-    implementation 'org.junit.jupiter:junit-jupiter:6.0.0'
+    implementation("com.typesafe:config:1.4.3")
+    // JUnit
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '6.0.3'
+    implementation group: 'org.junit.platform', name: 'junit-platform-engine', version: '6.0.3'
+    implementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '6.0.3'
 
-
-    // jUnit
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '6.0.2'
-
-    // frontend
+    // Frontend
     implementation group: 'com.codeborne', name: 'selenide', version: '7.14.0'
 
-    // assert
+    // Backend
+    implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '3.0.0'
+    implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '3.0.0'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.13.2'
+
+    // Assert
     implementation group: 'io.kotest', name: 'kotest-assertions-core', version: '6.1.1'
 
-    // allure
+    // Allure
     agent "org.aspectj:aspectjweaver:1.9.22"
     implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.22'
-    implementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.32.0'
+    implementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.33.0'
+    implementation group: 'io.qameta.allure', name: 'allure-okhttp3', version: '2.33.0'
+
+    // Source: https://mvnrepository.com/artifact/com.typesafe/config
+    testImplementation group: 'com.typesafe', name: 'config', version: '1.4.3'
+    // Source: https://mvnrepository.com/artifact/org.spongepowered/configurate-hocon
+    testImplementation group: 'org.spongepowered', name: 'configurate-hocon', version: '4.2.0'
+    // Source: https://mvnrepository.com/artifact/com.typesafe/config
+    testImplementation group: 'com.typesafe', name: 'config', version: '1.4.3'
+
 }

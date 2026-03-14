@@ -28,7 +28,7 @@ class ProductsCompareTest: BaseUiHelper() {
     }
 
     @Test
-    @DisplayName("Compare last item from main page with last item on product page")
+    @DisplayName("Compare first item from main page with first item on product page")
     fun `comparing first item from main page with first item on product page`(){
         val mainPageFirstItem = MainPage()
             .open()
