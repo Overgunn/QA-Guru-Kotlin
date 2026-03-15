@@ -1,4 +1,4 @@
-package org.example.kotlin.backend.api.models
+package backend.api.models
 
 data class ErrorResponse(
     var code: Int,

@@ -12,7 +12,7 @@ class CartTest: BaseUiHelper() {
 
     @Test
     @DisplayName("Check items in cart")
-    fun `adding items in cart from main page`(){
+    fun addCartItemsTest(){
         val lastPopularItem = MainPage()
             .open()
             .getPopularProducts()

@@ -15,7 +15,7 @@ class ProductsCompareTest: BaseUiHelper() {
 
     @Test
     @DisplayName("Comparing popular items from main page with items on product page")
-    fun `comparing popular items from main page with items on product page`(){
+    fun comparePopularToProducts(){
         val mainPageItems = MainPage()
             .open()
             .getPopularProducts()
@@ -29,7 +29,7 @@ class ProductsCompareTest: BaseUiHelper() {
 
     @Test
     @DisplayName("Compare first item from main page with first item on product page")
-    fun `comparing first item from main page with first item on product page`(){
+    fun compareFirstItems(){
         val mainPageFirstItem = MainPage()
             .open()
             .getPopularProducts()
@@ -48,7 +48,7 @@ class ProductsCompareTest: BaseUiHelper() {
 
     @Test
     @DisplayName("Compare last item name from main page with last item name on product page")
-    fun `comparing last item from main page with last item on product page`(){
+    fun compareLastItems(){
         val mainPageLastItem = MainPage()
             .open()
             .getPopularProducts()
