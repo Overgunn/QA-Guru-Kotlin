@@ -42,8 +42,14 @@ class CreateUserTest: Controllers() {
             .createNewUser(username, email, password)
             .execute()
 
+        val error = Gson().fromJson(
+            response.errorBody()?.string(),
+            ErrorResponse::class.java
+        )
         response.code() shouldBe 400
-        response.message() shouldBe "Something went wrong. Please verify request."
+        error shouldNotBe null
+        error?.code shouldBe CreateUserErrors.invalidCredentials.code
+        error?.reason shouldBe CreateUserErrors.invalidCredentials.reason
     }
 
     @Test
@@ -55,7 +61,6 @@ class CreateUserTest: Controllers() {
         val response = createUser
             .createNewUser(username, email, password)
             .execute()
-
 
         val error = Gson().fromJson(
             response.errorBody()?.string(),
