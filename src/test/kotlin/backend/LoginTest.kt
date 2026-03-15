@@ -10,6 +10,8 @@ import com.google.gson.Gson
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
 
 class LoginTest: Controllers() {
     @Test
@@ -25,6 +27,26 @@ class LoginTest: Controllers() {
     @DisplayName("Negative check: Login with invalid credentials should return error")
     fun testLoginWithInvalidCredentials() {
         val response = auth.login("random", "credentials")
+
+        val error = Gson().fromJson(
+            response.errorBody()?.string(),
+            ErrorResponse::class.java
+        )
+        response.code() shouldBe 400
+        error shouldNotBe null
+        error?.code shouldBe AuthErrorResponses.invalidCredentials.code
+        error?.reason shouldBe AuthErrorResponses.invalidCredentials.reason
+    }
+
+    @ParameterizedTest(name = "Email: {0}, Password {1}")
+    @DisplayName("Negative check: Log in with empty credentials should return error")
+    @CsvSource(
+        "'', ''",
+        "'user', ''",
+        "'', '1@1.com'")
+    fun testLoginWithEmptyCredentials(email: String, password: String) {
+        val response = auth
+            .login(email, password)
 
         val error = Gson().fromJson(
             response.errorBody()?.string(),
