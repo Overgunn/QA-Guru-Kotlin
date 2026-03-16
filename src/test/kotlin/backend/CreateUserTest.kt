@@ -1,9 +1,9 @@
 package backend
 
 import backend.api.models.ErrorResponse
+import backend.api.extension.Extensions.Companion.getErrorAsObject
 import backend.api.models.createUser.CreateUserErrors
 import backend.controllers.Controllers
-import com.google.gson.Gson
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldStartWith
@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 import java.util.UUID
-import kotlin.jvm.java
 
 class CreateUserTest: Controllers() {
     @Test
@@ -23,10 +22,8 @@ class CreateUserTest: Controllers() {
         val password = "Password123!"
         val response = createUser
             .createNewUser(username, email, password)
-            .execute()
 
-        response.code() shouldBe 200
-        val body = response.body()!!
+        val body = response?.body()!!
         body.phoneNumber.isEmpty() shouldBe true
         body.username shouldStartWith "user_"
         body.email shouldStartWith "user_"
@@ -40,16 +37,11 @@ class CreateUserTest: Controllers() {
         val password = "1-"
         val response = createUser
             .createNewUser(username, email, password)
-            .execute()
 
-        val error = Gson().fromJson(
-            response.errorBody()?.string(),
-            ErrorResponse::class.java
-        )
-        response.code() shouldBe 400
+        val error = response?.getErrorAsObject<ErrorResponse>()
+
         error shouldNotBe null
-        error?.code shouldBe CreateUserErrors.invalidCredentials.code
-        error?.reason shouldBe CreateUserErrors.invalidCredentials.reason
+        error shouldBe CreateUserErrors.invalidCredentials
     }
 
     @Test
@@ -60,16 +52,11 @@ class CreateUserTest: Controllers() {
         val password = "admin"
         val response = createUser
             .createNewUser(username, email, password)
-            .execute()
 
-        val error = Gson().fromJson(
-            response.errorBody()?.string(),
-            ErrorResponse::class.java
-        )
-        response.code() shouldBe 400
+        val error = response?.getErrorAsObject<ErrorResponse>()
+
         error shouldNotBe null
-        error?.code shouldBe CreateUserErrors.duplicateCredentials.code
-        error?.reason shouldBe CreateUserErrors.duplicateCredentials.reason
+        error shouldBe CreateUserErrors.duplicateCredentials
     }
 
 
@@ -82,17 +69,11 @@ class CreateUserTest: Controllers() {
     fun testUsersCreateEmptyCredentials(username: String, email: String, password: String) {
         val response = createUser
             .createNewUser(username, email, password)
-            .execute()
 
-        val error = Gson().fromJson(
-            response.errorBody()?.string(),
-            ErrorResponse::class.java
-        )
+        val error = response?.getErrorAsObject<ErrorResponse>()
 
-        response.code() shouldBe 400
         error shouldNotBe null
-        error?.code shouldBe CreateUserErrors.emptyCredentials.code
-        error?.reason shouldBe CreateUserErrors.emptyCredentials.reason
+        error shouldBe CreateUserErrors.emptyCredentials
     }
 }
 

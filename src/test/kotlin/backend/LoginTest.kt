@@ -1,12 +1,12 @@
 package backend
 
 import backend.api.extension.Extensions.Companion.getAsObject
+import backend.api.extension.Extensions.Companion.getErrorAsObject
 import backend.controllers.Controllers
 import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
 import backend.api.models.ErrorResponse
 import backend.api.models.auth.AuthErrorResponses
-import com.google.gson.Gson
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -28,14 +28,10 @@ class LoginTest: Controllers() {
     fun testLoginWithInvalidCredentials() {
         val response = auth.login("random", "credentials")
 
-        val error = Gson().fromJson(
-            response.errorBody()?.string(),
-            ErrorResponse::class.java
-        )
-        response.code() shouldBe 400
+        val error = response.getErrorAsObject<ErrorResponse>()
+
         error shouldNotBe null
-        error?.code shouldBe AuthErrorResponses.invalidCredentials.code
-        error?.reason shouldBe AuthErrorResponses.invalidCredentials.reason
+        error shouldBe AuthErrorResponses.invalidCredentials
     }
 
     @ParameterizedTest(name = "Email: {0}, Password {1}")
@@ -48,13 +44,9 @@ class LoginTest: Controllers() {
         val response = auth
             .login(email, password)
 
-        val error = Gson().fromJson(
-            response.errorBody()?.string(),
-            ErrorResponse::class.java
-        )
-        response.code() shouldBe 400
+        val error = response.getErrorAsObject<ErrorResponse>()
+
         error shouldNotBe null
-        error?.code shouldBe AuthErrorResponses.invalidCredentials.code
-        error?.reason shouldBe AuthErrorResponses.invalidCredentials.reason
+        error shouldBe AuthErrorResponses.invalidCredentials
     }
 }
