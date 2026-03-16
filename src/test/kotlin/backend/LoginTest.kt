@@ -6,7 +6,7 @@ import backend.controllers.Controllers
 import io.kotest.matchers.ints.shouldBeGreaterThan
 import io.kotest.matchers.shouldBe
 import backend.api.models.ErrorResponse
-import backend.api.models.auth.AuthErrorResponses
+import backend.api.models.auth.AuthErrorResponses.invalidCredentials
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -31,7 +31,7 @@ class LoginTest: Controllers() {
         val error = response.getErrorAsObject<ErrorResponse>()
 
         error shouldNotBe null
-        error shouldBe AuthErrorResponses.invalidCredentials
+        error shouldBe invalidCredentials
     }
 
     @ParameterizedTest(name = "Email: {0}, Password {1}")
@@ -47,6 +47,6 @@ class LoginTest: Controllers() {
         val error = response.getErrorAsObject<ErrorResponse>()
 
         error shouldNotBe null
-        error shouldBe AuthErrorResponses.invalidCredentials
+        error shouldBe invalidCredentials
     }
 }

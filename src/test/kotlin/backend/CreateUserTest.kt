@@ -2,7 +2,9 @@ package backend
 
 import backend.api.models.ErrorResponse
 import backend.api.extension.Extensions.Companion.getErrorAsObject
-import backend.api.models.createUser.CreateUserErrors
+import backend.api.models.createUser.CreateUserErrors.duplicateCredentials
+import backend.api.models.createUser.CreateUserErrors.emptyCredentials
+import backend.api.models.createUser.CreateUserErrors.invalidCredentials
 import backend.controllers.Controllers
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -41,7 +43,7 @@ class CreateUserTest: Controllers() {
         val error = response?.getErrorAsObject<ErrorResponse>()
 
         error shouldNotBe null
-        error shouldBe CreateUserErrors.invalidCredentials
+        error shouldBe invalidCredentials
     }
 
     @Test
@@ -56,7 +58,7 @@ class CreateUserTest: Controllers() {
         val error = response?.getErrorAsObject<ErrorResponse>()
 
         error shouldNotBe null
-        error shouldBe CreateUserErrors.duplicateCredentials
+        error shouldBe duplicateCredentials
     }
 
 
@@ -73,7 +75,7 @@ class CreateUserTest: Controllers() {
         val error = response?.getErrorAsObject<ErrorResponse>()
 
         error shouldNotBe null
-        error shouldBe CreateUserErrors.emptyCredentials
+        error shouldBe emptyCredentials
     }
 }
 
