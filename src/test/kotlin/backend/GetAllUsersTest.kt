@@ -4,6 +4,8 @@ import backend.api.extension.Extensions.Companion.getAsObject
 import backend.api.models.users.createUser.defaultUser
 import backend.controllers.Controllers
 import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.equals.shouldBeEqual
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
@@ -16,5 +18,46 @@ class GetAllUsersTest: Controllers() {
         val allUsers = users.getAllUsers().getAsObject()
 
         allUsers shouldContain user
+    }
+
+    @Test
+    @DisplayName("Get a limited number of users")
+    fun getLimitUsers() {
+        val allUsers = users.getAllUsers().getAsObject()
+        allUsers.size shouldBeEqual 50
+
+        val oneUser = users.getAllUsers(offset = 0, limit = 1).getAsObject()
+        oneUser.size shouldBeEqual 1
+
+        val overCap = users.getAllUsers(offset = 0, limit = 51).getAsObject()
+        overCap.size shouldBe 50
+    }
+
+    @Test
+    @DisplayName("Get a limited number of unique users per page")
+    fun getPaginatedUsers() {
+            val page1 = users.getAllUsers(offset = 0, limit = 10).getAsObject()
+            val page2 = users.getAllUsers(offset = 10, limit = 10).getAsObject()
+            val page3 = users.getAllUsers(offset = 20, limit = 10).getAsObject()
+            val page4 = users.getAllUsers(offset = 30, limit = 10).getAsObject()
+            val page5 = users.getAllUsers(offset = 40, limit = 10).getAsObject()
+            val page6 = users.getAllUsers(offset = 50, limit = 10).getAsObject()
+
+            page1.size shouldBe 10
+            page2.size shouldBe 10
+            page3.size shouldBe 10
+            page4.size shouldBe 10
+            page5.size shouldBe 10
+            page6.size shouldBe 1
+
+            val page1Ids = page1.map { it.id }.toSet()
+            val page2Ids = page2.map { it.id }.toSet()
+            val page3Ids = page3.map { it.id }.toSet()
+            val page4Ids = page4.map { it.id }.toSet()
+            val page5Ids = page5.map { it.id }.toSet()
+            val page6Ids = page6.map { it.id }.toSet()
+
+        val allIds = page1Ids + page2Ids + page3Ids + page4Ids + page5Ids + page6Ids
+        allIds.size shouldBe 51
     }
 }
