@@ -1,4 +1,4 @@
-package backend.api.models.createUser
+package backend.api.models.users.createUser
 
 import backend.api.models.ErrorResponse
 

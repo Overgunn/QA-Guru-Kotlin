@@ -1,12 +1,18 @@
 package general
 
+import backend.api.extension.Extensions.Companion.getAsObject
+import backend.controllers.Controllers
+import backend.helpers.AuthorizationHelper
+import backend.helpers.GarbageCollector
 import com.codeborne.selenide.Selenide
 import org.junit.platform.engine.TestExecutionResult
 import org.junit.platform.launcher.TestExecutionListener
 import org.junit.platform.launcher.TestIdentifier
 import org.junit.platform.launcher.TestPlan
 
-class TestListener : TestExecutionListener {
+class TestListener : Controllers(), TestExecutionListener {
+
+    private val authHelper = AuthorizationHelper()
 
     override fun testPlanExecutionStarted(testPlan: TestPlan) {
         Config.get
@@ -29,7 +35,18 @@ class TestListener : TestExecutionListener {
     }
 
     override fun testPlanExecutionFinished(testPlan: TestPlan) {
-        Selenide.closeWebDriver()
         println("|------ Test cycle finished -----|")
+        Selenide.closeWebDriver()
+        println("|------ Garbage collector -------|")
+        GarbageCollector.user.forEach { id ->
+            users.deleteUserById(token = authHelper.getAdminToken(), id = id)
+                .also {println("Deleted user: $id")}
+        }
+        users.getAllUsers(token = authHelper.getAdminToken(), offset = 1, limit = 50).getAsObject().forEach { user ->
+            if (user.email.contains("@autotest.com")) {
+                users.deleteUserById(token = authHelper.getAdminToken(), id = user.id)
+                    .also {println("Deleted user: ${user.email}")}
+            }
+        }
     }
 }

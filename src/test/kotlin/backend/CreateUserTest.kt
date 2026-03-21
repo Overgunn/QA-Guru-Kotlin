@@ -1,61 +1,62 @@
 package backend
 
+import backend.api.extension.Extensions.Companion.getAsObject
 import backend.api.models.ErrorResponse
 import backend.api.extension.Extensions.Companion.getErrorAsObject
-import backend.api.models.createUser.CreateUserErrors.duplicateCredentials
-import backend.api.models.createUser.CreateUserErrors.emptyCredentials
-import backend.api.models.createUser.CreateUserErrors.invalidCredentials
+import backend.api.models.users.createUser.CreateUserErrors.duplicateCredentials
+import backend.api.models.users.createUser.CreateUserErrors.emptyCredentials
+import backend.api.models.users.createUser.CreateUserErrors.invalidCredentials
+import backend.api.models.users.createUser.CreateUserRequest
+import backend.api.models.users.createUser.defaultUser
 import backend.controllers.Controllers
+import io.kotest.matchers.equality.shouldBeEqualToComparingFields
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import io.kotest.matchers.string.shouldStartWith
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
-import java.util.UUID
 
 class CreateUserTest: Controllers() {
+
     @Test
     @DisplayName("Positive check: create user with valid credentials")
     fun testUsersCreate() {
-        val username = "user_${UUID.randomUUID()}"
-        val email = "$username@test.com"
-        val password = "Password123!"
-        val response = createUser
-            .createNewUser(username, email, password)
+        val user = users.createUser(defaultUser).getAsObject()
+        val expectedUser = users.getUserById(id = user.id)
 
-        val body = response?.body()!!
-        body.phoneNumber.isEmpty() shouldBe true
-        body.username shouldStartWith "user_"
-        body.email shouldStartWith "user_"
+        expectedUser shouldBeEqualToComparingFields user
     }
 
     @Test
     @DisplayName("Negative check: creating user with invalid credentials should return error")
     fun testUsersCreateWithInvalidCredentials() {
-        val username = "1!"
-        val email = "1@"
-        val password = "1-"
-        val response = createUser
-            .createNewUser(username, email, password)
+        val response = users.createUser(
+            CreateUserRequest(
+                username = "1!",
+                email = "1@",
+                password = "1-"
+            )
+        )
 
-        val error = response?.getErrorAsObject<ErrorResponse>()
+        val error = response.getErrorAsObject<ErrorResponse>()
 
         error shouldNotBe null
         error shouldBe invalidCredentials
     }
 
     @Test
-    @DisplayName("Negative check: creating user with already existing credentials should return error")
+    @DisplayName("Negative check: creating user with existing credentials should return error")
     fun testUsersCreateAlreadyExistingCredentials() {
-        val username = "admin"
-        val email = "admin"
-        val password = "admin"
-        val response = createUser
-            .createNewUser(username, email, password)
+        val response = users.createUser(
+            CreateUserRequest(
+                username = "admin",
+                email = "admin",
+                password = "admin"
+            )
+        )
 
-        val error = response?.getErrorAsObject<ErrorResponse>()
+        val error = response.getErrorAsObject<ErrorResponse>()
 
         error shouldNotBe null
         error shouldBe duplicateCredentials
@@ -69,10 +70,15 @@ class CreateUserTest: Controllers() {
         "'user', '', ''",
         "'user', '1@1.com', ''")
     fun testUsersCreateEmptyCredentials(username: String, email: String, password: String) {
-        val response = createUser
-            .createNewUser(username, email, password)
+        val response = users.createUser(
+            CreateUserRequest(
+                username = username,
+                email = email,
+                password = password
+            )
+        )
 
-        val error = response?.getErrorAsObject<ErrorResponse>()
+        val error = response.getErrorAsObject<ErrorResponse>()
 
         error shouldNotBe null
         error shouldBe emptyCredentials

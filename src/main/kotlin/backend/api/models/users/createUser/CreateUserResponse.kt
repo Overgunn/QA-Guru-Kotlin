@@ -1,6 +1,6 @@
-package backend.api.models.createUser
+package backend.api.models.users.createUser
 
-data class CreateResponse(
+data class CreateUserResponse(
     val createdAt: Long,
     val email: String,
     val id: Int,
