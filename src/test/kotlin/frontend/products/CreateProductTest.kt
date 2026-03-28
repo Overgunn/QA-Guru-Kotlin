@@ -50,6 +50,5 @@ class CreateProductTest: BaseUiHelper() {
             .getPopularProducts().size
 
         backendCount shouldBeEqual frontendCount
-
     }
 }
