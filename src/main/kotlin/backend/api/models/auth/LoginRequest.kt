@@ -5,7 +5,7 @@ data class LoginRequest(
     var password: String?
 )
 
-val defaulAdmin = LoginRequest(
+val defaultAdmin = LoginRequest(
     email = "admin",
     password = "admin"
 )

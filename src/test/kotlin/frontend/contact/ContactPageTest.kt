@@ -1,4 +1,4 @@
-package frontend
+package frontend.contact
 
 import frontend.helpers.BaseUiHelper
 import frontend.pages.ContactPage
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test
 
 @Feature("Contact page")
 @Story("FrontEnd: Contact page basic check")
-@Tags(Tag("Contact-page"),Tag("frontend"))
+@Tags(Tag("Contact-page"), Tag("frontend"))
 
 class ContactPageTest: BaseUiHelper() {
 

@@ -22,7 +22,7 @@ class CreateUserTest: Controllers() {
     @Test
     @DisplayName("Positive check: create user with valid credentials")
     fun testUsersCreate() {
-        val user = users.createUser(defaultUser).getAsObject()
+        val user = users.createUser(defaultUser()).getAsObject()
         val expectedUser = users.getUserById(id = user.id)
 
         expectedUser shouldBeEqualToComparingFields user

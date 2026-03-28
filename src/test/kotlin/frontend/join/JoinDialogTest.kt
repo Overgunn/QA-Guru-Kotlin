@@ -1,26 +1,22 @@
-package frontend
+package frontend.join
 
 import frontend.helpers.BaseUiHelper
 import frontend.components.popup.JoinDialogPopup
-import frontend.components.popup.LoginPopup
 import frontend.pages.MainPage
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
-class LoginDialogTest: BaseUiHelper() {
+class JoinDialogTest: BaseUiHelper() {
 
     @Test
-    @DisplayName("Check after clicking 'Your account' link  in 'Join' popup window")
-    fun loginDialogPopup() {
+    @DisplayName("Check popup window after clicking 'Join' header button")
+    fun joinDialogPopup() {
         MainPage()
             .navigateHeader()
             .clickLink("Join")
 
         JoinDialogPopup()
-            .signInPopupClick()
-
-        LoginPopup()
-            .getLoginWindowTitle() shouldBe "Login"
+            .getTitle() shouldBe "Create Account"
     }
 }

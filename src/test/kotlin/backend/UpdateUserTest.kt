@@ -15,7 +15,7 @@ class UpdateUserTest: Controllers() {
     @Test
     @DisplayName("Positive check: update all user data")
     fun updateUserWithValidData() {
-        val user = users.createUser(defaultUser).getAsObject()
+        val user = users.createUser(defaultUser()).getAsObject()
         val updateUser = UpdateRequest(
             username = "updatedUsername",
             password = "updatedPassword",
@@ -34,7 +34,7 @@ class UpdateUserTest: Controllers() {
     @Test
     @DisplayName("Positive check: update user password")
     fun updateUserPassword() {
-        val user = users.createUser(defaultUser).getAsObject()
+        val user = users.createUser(defaultUser()).getAsObject()
 
         val updateUserData = UpdateRequest(password = "updatedPassword")
         users.updateUserById(id = user.id, body = updateUserData).checkIfSuccessful()
@@ -47,7 +47,7 @@ class UpdateUserTest: Controllers() {
     @Test
     @DisplayName("Positive check: update user phone number")
     fun updateUserEmail() {
-        val user = users.createUser(defaultUser).getAsObject()
+        val user = users.createUser(defaultUser()).getAsObject()
 
         val updateUserData = UpdateRequest(phoneNumber = "8(800)5553535")
         users.updateUserById(id = user.id, body = updateUserData).checkIfSuccessful()

@@ -8,8 +8,8 @@ data class CreateUserRequest (
     var email: String
 )
 
-val defaultUser = CreateUserRequest(
-    username = "user_${Random.nextInt(1000)}",
+fun defaultUser() = CreateUserRequest(
+    username = "user_${Random.nextInt(10000)}",
     password = "random",
-    email = "${Random.nextInt(1000)}@autotest.com"
+    email = "${Random.nextInt(10000)}@autotest.com"
 )

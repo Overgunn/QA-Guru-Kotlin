@@ -17,7 +17,7 @@ class UsersController: Endpoints() {
 
     @Step("Get all users")
     fun getAllUsers(token: String = authHelper.getAdminToken(), offset: Int = 0, limit: Int = 50): Response<List<CreateUserResponse>> {
-        return users.getUsers(token,offset, limit).execute()
+        return users.getUsers(token,offset,limit).execute()
     }
 
     @Step("Create new user")

@@ -1,6 +1,5 @@
 package general
 
-import backend.api.extension.Extensions.Companion.getAsObject
 import backend.controllers.Controllers
 import backend.helpers.AuthorizationHelper
 import backend.helpers.GarbageCollector
@@ -42,11 +41,15 @@ class TestListener : Controllers(), TestExecutionListener {
             users.deleteUserById(token = authHelper.getAdminToken(), id = id)
                 .also {println("Deleted user: $id")}
         }
-        users.getAllUsers(token = authHelper.getAdminToken(), offset = 1, limit = 50).getAsObject().forEach { user ->
+
+        GarbageCollector.products.forEach { id ->
+            products.deleteProductById(token = authHelper.getAdminToken(), id = id)
+                .also { println("Deleted product: $id") }
+        }
+
+/*        users.getAllUsers(token = authHelper.getAdminToken(), offset = 1, limit = 50).getAsObject().forEach { user ->
             if (user.email.contains("@autotest.com")) {
                 users.deleteUserById(token = authHelper.getAdminToken(), id = user.id)
-                    .also {println("Deleted user: ${user.email}")}
+                    .also {println("Deleted user: ${user.email}")}*/
             }
         }
-    }
-}

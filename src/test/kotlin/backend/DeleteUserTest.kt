@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test
 class DeleteUserTest: Controllers() {
     @Test
     @DisplayName("Delete user with valid token should return 200")
-    fun testDeteleUserWithValidToken() {
-        val user = users.createUser(defaultUser).getAsObject()
+    fun testDeleteUserWithValidToken() {
+        val user = users.createUser(defaultUser()).getAsObject()
         val login = auth.login("admin","admin").getAsObject()
         val delete = users.deleteUserById(login.accessToken.toBearer(), user.id)
 

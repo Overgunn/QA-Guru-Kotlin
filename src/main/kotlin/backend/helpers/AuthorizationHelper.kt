@@ -4,7 +4,7 @@ import backend.api.extension.Extensions.Companion.getAsObject
 import backend.api.extension.Extensions.Companion.toBearer
 import backend.controllers.Controllers
 import io.qameta.allure.Step
-import org.example.kotlin.backend.api.models.auth.defaulAdmin
+import org.example.kotlin.backend.api.models.auth.defaultAdmin
 
 class AuthorizationHelper: Controllers() {
 
@@ -15,6 +15,6 @@ class AuthorizationHelper: Controllers() {
 
     @Step("Get admin token")
     fun getAdminToken(): String {
-        return auth.login(email = defaulAdmin.email, password = defaulAdmin.password).getAsObject().accessToken.toBearer()
+        return auth.login(email = defaultAdmin.email, password = defaultAdmin.password).getAsObject().accessToken.toBearer()
     }
 }

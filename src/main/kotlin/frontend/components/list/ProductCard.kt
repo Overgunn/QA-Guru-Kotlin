@@ -18,7 +18,7 @@ class ProductCard (val items: ElementsCollection) {
                 price = it.find(byDataTestGroup("product-card-price")).text.toMoney(),
                 btnIncrement = it.find(byDataTestGroup("product-card-increment")),
                 btnDecrement = it.find(byDataTestGroup("product-card-decrement")),
-                quantity = it.find(byDataTestGroup("product-card-qty")).text.toInt(),
+                quantity = it.find(byDataTestGroup("product-card-qty")).text.toIntOrNull() ?: 0,
             ) }
     }
 }

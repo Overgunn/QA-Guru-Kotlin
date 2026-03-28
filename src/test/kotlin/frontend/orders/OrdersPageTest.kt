@@ -1,4 +1,4 @@
-package frontend
+package frontend.orders
 
 import frontend.helpers.BaseUiHelper
 import frontend.pages.MainPage
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test
 
 @Feature("Orders page")
 @Story("FrontEnd: Orders page basic check")
-@Tags(Tag("Orders-page"),Tag("frontend"))
+@Tags(Tag("Orders-page"), Tag("frontend"))
 
 class OrdersPageTest: BaseUiHelper() {
 

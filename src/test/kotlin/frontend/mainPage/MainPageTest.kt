@@ -1,4 +1,4 @@
-package frontend
+package frontend.mainPage
 
 import frontend.helpers.BaseUiHelper
 import frontend.pages.MainPage
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test
 
 @Feature("Main page")
 @Story("FrontEnd: Main page basic check")
-@Tags(Tag("Main-page"),Tag("frontend"))
+@Tags(Tag("Main-page"), Tag("frontend"))
 
 class MainPageTest : BaseUiHelper() {
 

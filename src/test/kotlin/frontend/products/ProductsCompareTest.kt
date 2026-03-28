@@ -1,4 +1,4 @@
-package frontend
+package frontend.products
 
 import frontend.helpers.BaseUiHelper
 import frontend.pages.MainPage

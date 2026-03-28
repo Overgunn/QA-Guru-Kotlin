@@ -1,6 +1,7 @@
 package frontend.pages
 
 import com.codeborne.selenide.ElementsCollection
+import com.codeborne.selenide.Selenide
 import com.codeborne.selenide.Selenide.element
 import com.codeborne.selenide.Selenide.elements
 import com.codeborne.selenide.SelenideElement
@@ -13,6 +14,12 @@ import io.qameta.allure.Step
 class ProductsPage {
     private val productPageTitle: SelenideElement get() = element(byDataTestId("products-title"))
     private val listProductItems: ElementsCollection get() = elements(byDataTestGroup("product-card"))
+
+    @Step("Open products page")
+    fun open(): ProductsPage {
+        Selenide.open("/")
+        return this
+    }
 
     @Step("Check product page title")
     fun shouldHaveTitle(): String {

@@ -5,6 +5,7 @@ import backend.api.models.users.createUser.defaultUser
 import backend.controllers.Controllers
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.equals.shouldBeEqual
+import io.kotest.matchers.equals.shouldNotBeEqual
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -14,7 +15,7 @@ class GetAllUsersTest: Controllers() {
     @Test
     @DisplayName("Get requested user from all users")
     fun getUserFromAllUsers() {
-        val user = users.createUser(defaultUser).getAsObject()
+        val user = users.createUser(defaultUser()).getAsObject()
         val allUsers = users.getAllUsers().getAsObject()
 
         allUsers shouldContain user
@@ -22,7 +23,7 @@ class GetAllUsersTest: Controllers() {
 
     @Test
     @DisplayName("Get a limited number of users")
-    fun getLimitUsers() {
+    fun checkLimitUsers() {
         val allUsers = users.getAllUsers().getAsObject()
         allUsers.size shouldBeEqual 50
 
@@ -31,6 +32,13 @@ class GetAllUsersTest: Controllers() {
 
         val overCap = users.getAllUsers(offset = 0, limit = 51).getAsObject()
         overCap.size shouldBe 50
+
+        val firstTenUsers = users.getAllUsers(offset = 0, limit = 10).getAsObject()
+        val secondTenUsers = users.getAllUsers(offset = 11, limit = 10).getAsObject()
+        val firstTenIds = firstTenUsers.map { it.id }.toSet()
+        val secondTenIds = secondTenUsers.map { it.id }.toSet()
+
+        firstTenIds shouldNotBeEqual secondTenIds
     }
 
     @Test

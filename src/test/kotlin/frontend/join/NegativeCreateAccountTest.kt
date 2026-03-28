@@ -1,4 +1,4 @@
-package frontend
+package frontend.join
 
 import frontend.helpers.BaseUiHelper
 import frontend.components.popup.CreateAccountPopup

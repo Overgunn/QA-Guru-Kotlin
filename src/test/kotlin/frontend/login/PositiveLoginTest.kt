@@ -1,4 +1,4 @@
-package frontend
+package frontend.login
 
 import frontend.helpers.BaseUiHelper
 import frontend.components.popup.JoinDialogPopup

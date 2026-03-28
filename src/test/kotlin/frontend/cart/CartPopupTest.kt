@@ -1,4 +1,4 @@
-package frontend
+package frontend.cart
 
 import frontend.helpers.BaseUiHelper
 import frontend.components.popup.CartPopup
