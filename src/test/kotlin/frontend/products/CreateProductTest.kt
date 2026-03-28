@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import backend.controllers.Controllers
 import backend.helpers.AuthorizationHelper
+import backend.helpers.ProductHelper
 import frontend.pages.MainPage
 import io.kotest.matchers.equals.shouldBeEqual
 
@@ -14,15 +15,15 @@ import io.kotest.matchers.equals.shouldBeEqual
 class CreateProductTest: BaseUiHelper() {
     private val controllers = Controllers()
     private val authHelper = AuthorizationHelper()
-
+    val productsHelper = ProductHelper()
 
     @Test
     @DisplayName("Create and check created products")
     fun createAndCheckProducts() {
 
+        val listOfTea = productsHelper.createTeaProduct(5)
+
         val productsCheck = controllers.products.getProducts()
-
-
         var checkCoffeeProducts = if (productsCheck.isSuccessful) {
             productsCheck.getAsObject().filter { it.name.contains("Coffee", ignoreCase = true) }
         } else {
@@ -40,6 +41,7 @@ class CreateProductTest: BaseUiHelper() {
                     )
                 )
             }
+
             checkCoffeeProducts = controllers.products.getProducts().getAsObject()
                 .filter { it.name.contains("COFFEE", ignoreCase = true) }
         }
