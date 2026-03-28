@@ -44,12 +44,10 @@ class CreateProductTest: BaseUiHelper() {
                 .filter { it.name.contains("COFFEE", ignoreCase = true) }
         }
         val backendCount = checkCoffeeProducts.size
-        println(backendCount)
 
         val frontendCount = MainPage()
             .open()
             .getPopularProducts().size
-        println(frontendCount)
 
         backendCount shouldBeEqual frontendCount
 
