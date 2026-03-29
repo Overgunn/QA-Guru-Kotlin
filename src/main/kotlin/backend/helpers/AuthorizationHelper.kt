@@ -2,6 +2,7 @@ package backend.helpers
 
 import backend.api.extension.Extensions.Companion.getAsObject
 import backend.api.extension.Extensions.Companion.toBearer
+import backend.api.models.users.createUser.defaultUser
 import backend.controllers.Controllers
 import io.qameta.allure.Step
 import org.example.kotlin.backend.api.models.auth.defaultAdmin
@@ -9,8 +10,10 @@ import org.example.kotlin.backend.api.models.auth.defaultAdmin
 class AuthorizationHelper: Controllers() {
 
     @Step("Get authorization token")
-    fun getToken(email: String, password: String): String {
-        return auth.login(email, password).getAsObject().accessToken.toBearer()
+    fun getToken(): String {
+        val userRequest = defaultUser()
+        users.createUser(userRequest)
+        return auth.login(email = userRequest.email, password = userRequest.password).getAsObject().accessToken.toBearer()
     }
 
     @Step("Get admin token")
