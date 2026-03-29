@@ -1,7 +1,9 @@
 package frontend.products
 
 import backend.api.extension.Extensions.Companion.getAsObject
+import backend.api.extension.Extensions.Companion.toBearer
 import backend.api.models.products.CreateProductRequest
+import backend.api.models.users.createUser.defaultUser
 import frontend.helpers.BaseUiHelper
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -23,7 +25,14 @@ class CreateProductTest: BaseUiHelper() {
 
         val listOfTea = productsHelper.createTeaProduct(5)
 
-        val userToken = authHelper.getToken()
+        val userToken = authHelper.getNewToken() // -- пользователь с таким токеном не может создавать товары
+/*        val userRequest = defaultUser()
+        controllers.users.createUser(userRequest)
+        val userToken = controllers.auth.login(
+            email = userRequest.email,
+            password = userRequest.password
+        ).getAsObject().accessToken.toBearer()*/ //-- пользователь с таким токеном не может создавать товары
+
 
         controllers.products.getProducts().getAsObject()
             .firstOrNull { it.name.contains("Coffee", ignoreCase = true) }

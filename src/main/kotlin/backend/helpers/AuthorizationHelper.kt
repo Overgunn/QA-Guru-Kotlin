@@ -10,7 +10,12 @@ import org.example.kotlin.backend.api.models.auth.defaultAdmin
 class AuthorizationHelper: Controllers() {
 
     @Step("Get authorization token")
-    fun getToken(): String {
+    fun getToken(email: String, password: String): String {
+        return auth.login(email, password).getAsObject().accessToken.toBearer()
+    }
+
+    @Step("Get new user token")
+    fun getNewToken(): String {
         val userRequest = defaultUser()
         users.createUser(userRequest)
         return auth.login(email = userRequest.email, password = userRequest.password).getAsObject().accessToken.toBearer()
