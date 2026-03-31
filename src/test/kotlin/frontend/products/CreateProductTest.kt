@@ -1,9 +1,7 @@
 package frontend.products
 
 import backend.api.extension.Extensions.Companion.getAsObject
-import backend.api.extension.Extensions.Companion.toBearer
 import backend.api.models.products.CreateProductRequest
-import backend.api.models.users.createUser.defaultUser
 import frontend.helpers.BaseUiHelper
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -11,6 +9,7 @@ import backend.controllers.Controllers
 import backend.helpers.AuthorizationHelper
 import backend.helpers.ProductHelper
 import frontend.pages.MainPage
+import frontend.pages.ProductsPage
 import io.kotest.matchers.equals.shouldBeEqual
 
 
@@ -23,15 +22,9 @@ class CreateProductTest: BaseUiHelper() {
     @DisplayName("Create and check created products")
     fun createAndCheckProducts() {
 
-        val listOfTea = productsHelper.createTeaProduct(5)
+        val listOfTea = productsHelper.createTeaProduct(4)
 
-        val userToken = authHelper.getNewToken() // -- пользователь с таким токеном не может создавать товары
-/*        val userRequest = defaultUser()
-        controllers.users.createUser(userRequest)
-        val userToken = controllers.auth.login(
-            email = userRequest.email,
-            password = userRequest.password
-        ).getAsObject().accessToken.toBearer()*/ //-- пользователь с таким токеном не может создавать товары
+       val userToken = authHelper.getNewToken()
 
 
         controllers.products.getProducts().getAsObject()
@@ -51,11 +44,14 @@ class CreateProductTest: BaseUiHelper() {
 
         val backendCount = controllers.products.getProducts().getAsObject()
             .filter { it.name.contains("Coffee", ignoreCase = true) }.size
+        println(backendCount)
 
-        val frontendCount = MainPage()
-            .open()
-            .getPopularProducts()
+
+        MainPage().navigateHeader().clickLink("Products")
+        val frontendCount = ProductsPage()
+            .getProductItems()
             .filter { it.name.contains("Coffee", ignoreCase = true) }.size
+        println(frontendCount)
 
         backendCount shouldBeEqual frontendCount
     }
