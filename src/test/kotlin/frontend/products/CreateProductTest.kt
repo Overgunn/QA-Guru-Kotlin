@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test
 import backend.controllers.Controllers
 import backend.helpers.AuthorizationHelper
 import backend.helpers.ProductHelper
-import frontend.pages.MainPage
 import frontend.pages.ProductsPage
 import io.kotest.matchers.equals.shouldBeEqual
 
@@ -44,9 +43,8 @@ class CreateProductTest: BaseUiHelper() {
         val backendCount = controllers.products.getProducts().getAsObject()
             .filter { it.name.contains("Coffee", ignoreCase = true) }.size
 
-
-        MainPage().navigateHeader().clickLink("Products")
         val frontendCount = ProductsPage()
+            .open()
             .getProductItems()
             .filter { it.name.contains("Coffee", ignoreCase = true) }.size
 

@@ -15,9 +15,9 @@ class ProductsPage {
     private val productPageTitle: SelenideElement get() = element(byDataTestId("products-title"))
     private val listProductItems: ElementsCollection get() = elements(byDataTestGroup("product-card"))
 
-    @Step("Open products page")
+    @Step("Открыть страницу продуктов")
     fun open(): ProductsPage {
-        Selenide.open("/products")
+        Selenide.open("products")
         return this
     }
 
