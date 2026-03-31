@@ -17,7 +17,7 @@ class ProductsPage {
 
     @Step("Open products page")
     fun open(): ProductsPage {
-        Selenide.open("/")
+        Selenide.open("/products")
         return this
     }
 

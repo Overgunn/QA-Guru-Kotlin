@@ -46,6 +46,13 @@ dependencies {
     implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '3.0.0'
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.13.2'
 
+    //Database
+    def exposedVersion = "1.1.1"
+    testImplementation group: 'org.postgresql', name: 'postgresql', version: '42.7.10'
+    implementation group: 'org.jetbrains.exposed', name: 'exposed-core', version: exposedVersion
+    implementation group: 'org.jetbrains.exposed', name: 'exposed-jdbc', version: exposedVersion
+
+
     // Assert
     implementation group: 'io.kotest', name: 'kotest-assertions-core', version: '6.1.1'
 

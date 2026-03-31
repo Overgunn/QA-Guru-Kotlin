@@ -26,7 +26,6 @@ class CreateProductTest: BaseUiHelper() {
 
        val userToken = authHelper.getNewToken()
 
-
         controllers.products.getProducts().getAsObject()
             .firstOrNull { it.name.contains("Coffee", ignoreCase = true) }
             ?: run {
@@ -44,14 +43,12 @@ class CreateProductTest: BaseUiHelper() {
 
         val backendCount = controllers.products.getProducts().getAsObject()
             .filter { it.name.contains("Coffee", ignoreCase = true) }.size
-        println(backendCount)
 
 
         MainPage().navigateHeader().clickLink("Products")
         val frontendCount = ProductsPage()
             .getProductItems()
             .filter { it.name.contains("Coffee", ignoreCase = true) }.size
-        println(frontendCount)
 
         backendCount shouldBeEqual frontendCount
     }
