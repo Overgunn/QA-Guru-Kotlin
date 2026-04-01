@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach
 open class BaseUiHelper {
 
     init {
-        Configuration.baseUrl = "http://localhost:4000/"
+        Configuration.baseUrl = "http://localhost:4000"
         Configuration.pageLoadStrategy = "normal"
         Configuration.reopenBrowserOnFail = true
         Configuration.timeout = 5000
