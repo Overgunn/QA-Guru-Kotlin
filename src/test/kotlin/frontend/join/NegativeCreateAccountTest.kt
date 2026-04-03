@@ -22,7 +22,7 @@ class NegativeCreateAccountTest: BaseUiHelper() {
         MainPage().navigateHeader().clickLink("Join")
 
         CreateAccountPopup()
-            .loginAs(username, email, password)
+            .joinAs(username, email, password)
             .getErrorMessage(expectedError)
     }
 }

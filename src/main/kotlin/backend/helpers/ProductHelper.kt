@@ -1,5 +1,6 @@
 package backend.helpers
 
+import backend.api.extension.Extensions.Companion.getAsObject
 import backend.api.models.products.CreateProductRequest
 import backend.controllers.Controllers
 import io.qameta.allure.Step
@@ -18,6 +19,28 @@ class ProductHelper: Controllers() {
         }
 
         return listOfProducts.toList()
+    }
+
+    @Step("Add product if it doesn't exist")
+    fun addProduct(name: String, count: Int, token: String): List<CreateProductRequest> {
+        val existingProducts = products.getProducts().getAsObject()
+            .filter { it.name.contains(name, ignoreCase = true) }
+
+        if (existingProducts.isNotEmpty()) return existingProducts.map {
+            CreateProductRequest(name = it.name, price = it.price, description = "Description for product #$name")
+        }
+
+        val addedProducts = mutableListOf<CreateProductRequest>()
+        repeat(count){i ->
+            val product = CreateProductRequest(
+                name = "${name} #$i",
+                description = "Description for product #$i",
+                price = i.toDouble()
+            )
+            products.createProduct(token = token, product = product)
+            addedProducts.add(product)
+        }
+        return addedProducts.toList()
     }
 
     @Step("Create a number of tea products: {count}")

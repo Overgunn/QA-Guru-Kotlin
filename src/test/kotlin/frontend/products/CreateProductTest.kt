@@ -1,7 +1,6 @@
 package frontend.products
 
 import backend.api.extension.Extensions.Companion.getAsObject
-import backend.api.models.products.CreateProductRequest
 import frontend.helpers.BaseUiHelper
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -21,24 +20,11 @@ class CreateProductTest: BaseUiHelper() {
     @DisplayName("Create and check created products")
     fun createAndCheckProducts() {
 
-        val listOfTea = productsHelper.createTeaProduct(4)
+        productsHelper.createTeaProduct(4)
 
-       val userToken = authHelper.getNewToken()
+        val userToken = authHelper.getNewToken()
+        productsHelper.addProduct(name = "Coffee", count = 5, token = userToken)
 
-        controllers.products.getProducts().getAsObject()
-            .firstOrNull { it.name.contains("Coffee", ignoreCase = true) }
-            ?: run {
-                repeat(5) { i ->
-                    controllers.products.createProduct(
-                        token = userToken,
-                        product = CreateProductRequest(
-                            name = "Coffee #$i",
-                            description = "Description for coffee #$i",
-                            price = i.toDouble()
-                        )
-                    )
-                }
-            }
 
         val backendCount = controllers.products.getProducts().getAsObject()
             .filter { it.name.contains("Coffee", ignoreCase = true) }.size

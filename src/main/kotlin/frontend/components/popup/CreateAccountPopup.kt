@@ -14,7 +14,7 @@ class CreateAccountPopup {
     private val errorMessage get() = element(byDataTestId("create-error"))
 
     @Step("Check user login with given credentials")
-    fun loginAs(username: String, email: String, password: String): CreateAccountPopup {
+    fun joinAs(username: String, email: String, password: String): CreateAccountPopup {
         usernameInput.value = username
         emailInput.value = email
         passwordInput.value = password
