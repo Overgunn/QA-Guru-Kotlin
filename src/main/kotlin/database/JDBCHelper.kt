@@ -45,7 +45,6 @@ fun getProductNew() = client.use { connection ->
     }
 }
 
-
     fun getUsers(): List<Users> {
         val users = mutableListOf<Users>()
 
@@ -54,10 +53,12 @@ fun getProductNew() = client.use { connection ->
             val resultSet: ResultSet = statement.executeQuery("SELECT * FROM table_users")
 
             while (resultSet.next()){
-                val user = Users(
+                users.add((Users(
                     id = resultSet.getInt("id"),
                     username = resultSet.getString("username"),
-                    email = resultSet.getString("email"),
+                    email = resultSet.getString("email")
+                )
+                        )
                 )
             }
 
@@ -92,12 +93,12 @@ data class Product(
     val description: String
 )
 
-
 fun ResultSet.toUsers(): Users = Users(
     id = getInt("id"),
     username = getString("username"),
     email = getString("email"),
 )
+
 data class Users(
     var id: Int,
     var username: String,

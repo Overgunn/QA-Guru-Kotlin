@@ -29,7 +29,7 @@ class DbCreateUser: BaseUiHelper() {
 
         val jdbcClient = JDBCHelper()
 
-        val users = jdbcClient.getNewUser().firstOrNull() { it.email == email}
+        val users = jdbcClient.getUsers().firstOrNull() { it.email == email}
         println(users)
 
         users?.let {
