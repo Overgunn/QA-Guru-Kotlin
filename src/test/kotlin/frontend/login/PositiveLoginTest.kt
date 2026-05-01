@@ -13,9 +13,7 @@ class PositiveLoginTest: BaseUiHelper() {
 
     @DisplayName("Parametrized login validation positive test")
     @ParameterizedTest(name = "Email {0}, Password: {1}")
-    @CsvSource(
-        "'q', 'q'"
-    )
+    @CsvSource("'q', 'q'")
     fun loginValidation(email: String, password: String) {
 
         MainPage()

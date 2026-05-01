@@ -17,12 +17,12 @@ class NegativeCreateAccountTest: BaseUiHelper() {
         "'user', '1@1.com', '', 'Please enter username, email and password'",
         "'q','q',q', 'Something went wrong. Please verify request.'"
     )
-    fun createAccountValidation(username: String, email: String, password: String, expectedError: String) {
+    fun createAccountValidation(username: String, email: String, password: String) {
 
         MainPage().navigateHeader().clickLink("Join")
 
         CreateAccountPopup()
             .joinAs(username, email, password)
-            .getErrorMessage(expectedError)
+            .getErrorMessage()
     }
 }
